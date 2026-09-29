@@ -1,18 +1,15 @@
+# RStudio工作目录设为本文件夹
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(ggsignif)
+library(ggsci)
+dir.create("generated/cf_ratio",recursive=TRUE,showWarnings=FALSE)
 
-################################
-##### RNA type reads ratio #####
-#####        wangge        #####
-#####       20240910       #####
-################################
-
-
-
-setwd("/Users/wangge/Documents/DM/cfRNA/")
-
-mt <- read.table("totalRNA.matrix.txt",sep="\t",header=T,check.names = F)
+mt <- read.table("inputs/cfRNA/totalRNA.matrix.txt",sep="\t",header=T,check.names = F)
 libsize <- colSums(mt)
 rtype <- data.frame(libsize=libsize)
-df <- read.table("totalRNA.matrix.type.txt",sep="\t",header=T,check.names = F)
+df <- read.table("inputs/cfRNA/totalRNA.matrix.type.txt",sep="\t",header=T,check.names = F)
 identical(rownames(mt), df$ncrnaid)
 mt$type2 <- df$type2
 mt_sums <- aggregate(. ~ type2, data = mt, FUN = sum)
@@ -73,14 +70,13 @@ compare_mt_ratio <- function(rna_type, mt_ratio, y_limits, y_breaks, y_labels) {
                 vjust = 0.25)
   
   # 保存图像
-  ggsave(paste0("plot/", rna_type, "-ratio.pdf"), p, width = 3.3, height = 4)
+  ggsave(paste0("generated/cf_ratio/", rna_type, "-ratio.pdf"), p, width = 3.3, height = 4)
   
   return(p)
 }
 
-rna_types <- colnames(mt_ratio[,-15])
+rna_types <- c("mRNA","lncRNA","miRNA","tucpRNA","pseudogene")
 
 for (rna_type in rna_types) {
-  print(paste("Plotting for:", rna_type))
   compare_mt_ratio(rna_type, mt_ratio, NULL, NULL, NULL)
 }

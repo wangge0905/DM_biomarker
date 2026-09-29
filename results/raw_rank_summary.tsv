@@ -1,0 +1,2 @@
+analysis	n	mean_repeated_cv_AUC	participant_mean_oof_AUC	participant_AUC_low	participant_AUC_high	current_participant_mean_oof_AUC	score_correlation_with_current
+sample-wise raw-count rank score; QC standardization and residualization fitted within each outer fold	87	0.662393162393162	0.68482905982906	0.569417735042735	0.791666666666667	0.68482905982906	1

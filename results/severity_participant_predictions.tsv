@@ -1,0 +1,523 @@
+model	validation	sample_id	library_id	group	truth	probability	repeated_predictions
+Transcript-level	repeated_nested_5fold	ARS-6	230821-IM-U1_BC26	ARS	0	0.340117138711208	10
+Transcript-level	repeated_nested_5fold	ARS-1	230821-IM-U2_BC21	ARS	0	0.510404065952144	10
+Transcript-level	repeated_nested_5fold	ARS-4	230821-IM-U4_BC24	ARS	0	0.267854106132121	10
+Transcript-level	repeated_nested_5fold	ARS-7	230821-IM-U4_BC27	ARS	0	0.379989240159308	10
+Transcript-level	repeated_nested_5fold	ARS-2	230821-IM-U5_BC22	ARS	0	0.311700796205441	10
+Transcript-level	repeated_nested_5fold	MDA5-2	230821-IM-U2_BC12	MDA5	0	0.271883022837744	10
+Transcript-level	repeated_nested_5fold	MDA5-3	230821-IM-U2_BC13	MDA5	0	0.546846682533875	10
+Transcript-level	repeated_nested_5fold	MDA5-6	230821-IM-U2_BC16	MDA5	0	0.246868734746253	10
+Transcript-level	repeated_nested_5fold	MDA5-1	230821-IM-U4_BC11	MDA5	0	0.264953243571453	10
+Transcript-level	repeated_nested_5fold	MDA5-5	230821-IM-U4_BC15	MDA5	0	0.693926958712043	10
+Transcript-level	repeated_nested_5fold	MDA5-8	230821-IM-U4_BC18	MDA5	0	0.408692117764432	10
+Transcript-level	repeated_nested_5fold	MDA5-9	230821-IM-U5_BC19	MDA5	0	0.392956202309609	10
+Transcript-level	repeated_nested_5fold	ARS-27	230905-IM-U1_BC39	ARS	0	0.465052933971298	10
+Transcript-level	repeated_nested_5fold	ARS-24	230905-IM-U2_BC36	ARS	0	0.594110200996662	10
+Transcript-level	repeated_nested_5fold	ARS-22	230905-IM-U3_BC34	ARS	0	0.357395366540981	10
+Transcript-level	repeated_nested_5fold	ARS-16	230905-IM-U6_BC12	ARS	0	0.300516768350772	10
+Transcript-level	repeated_nested_5fold	ARS-20	230905-IM-U6_BC27	ARS	0	0.289302636727139	10
+Transcript-level	repeated_nested_5fold	ARS-23	230905-IM-U6_BC35	ARS	0	0.319470184835942	10
+Transcript-level	repeated_nested_5fold	ARS-26	230905-IM-U7_BC38	ARS	0	0.480129550515744	10
+Transcript-level	repeated_nested_5fold	MDA5-11	230905-IM-U1_BC16	MDA5	0	0.424546205607895	10
+Transcript-level	repeated_nested_5fold	MDA5-22	230905-IM-U2_BC33	MDA5	0	0.451958033296174	10
+Transcript-level	repeated_nested_5fold	MDA5-13	230905-IM-U3_BC22	MDA5	0	0.440442001974613	10
+Transcript-level	repeated_nested_5fold	MDA5-21	230905-IM-U6_BC32	MDA5	0	0.425559365411705	10
+Transcript-level	repeated_nested_5fold	MDA5-16	230905-IM-U7_BC25	MDA5	0	0.609354961105973	10
+Transcript-level	repeated_nested_5fold	ARS-33	230914-IM-U2_BC37	ARS	0	0.338392271102853	10
+Transcript-level	repeated_nested_5fold	ARS-31	230914-IM-U5_BC18	ARS	0	0.667599691253099	10
+Transcript-level	repeated_nested_5fold	ARS-28	230914-IM-U6_BC15	ARS	0	0.246899294359028	10
+Transcript-level	repeated_nested_5fold	MDA5-29	230914-IM-U5_BC21	MDA5	0	0.311909976511074	10
+Transcript-level	repeated_nested_5fold	MDA5-31	230914-IM-U5_BC23	MDA5	0	0.326485631336551	10
+Transcript-level	repeated_nested_5fold	MDA5-25	230914-IM-U6_BC13	MDA5	0	0.705768371011683	10
+Transcript-level	repeated_nested_5fold	MDA5-37	230914-IM-U6_BC29	MDA5	0	0.259376943834994	10
+Transcript-level	repeated_nested_5fold	MDA5-44	230914-IM-U6_BC38	MDA5	0	0.430441959081741	10
+Transcript-level	repeated_nested_5fold	MDA5-24	230914-IM-U8_BC12	MDA5	0	0.36656257811533	10
+Transcript-level	repeated_nested_5fold	MDA5-38	230914-IM-U8_BC30	MDA5	0	0.450157484474569	10
+Transcript-level	repeated_nested_5fold	MDA5-43	230914-IM-U8_BC36	MDA5	0	0.53907491196724	10
+Transcript-level	repeated_nested_5fold	ARS-48	230926-IM-U2_BC24	ARS	0	0.536203095068616	10
+Transcript-level	repeated_nested_5fold	ARS-36	230926-IM-U3_BC12	ARS	0	0.460132375885366	10
+Transcript-level	repeated_nested_5fold	ARS-43	230926-IM-U6_BC19	ARS	0	0.705986348519665	10
+Transcript-level	repeated_nested_5fold	ARS-47	230926-IM-U6_BC23	ARS	0	0.377552742196946	10
+Transcript-level	repeated_nested_5fold	ARS-50	230926-IM-U6_BC27	ARS	0	0.744814453244636	10
+Transcript-level	repeated_nested_5fold	ARS-38	230926-IM-U7_BC14	ARS	0	0.290691292424598	10
+Transcript-level	repeated_nested_5fold	ARS-35	230926-IM-U8_BC11	ARS	0	0.326887384126987	10
+Transcript-level	repeated_nested_5fold	ARS-46	230926-IM-U8_BC22	ARS	0	0.359046822372466	10
+Transcript-level	repeated_nested_5fold	MDA5-52	230926-IM-U1_BC34	MDA5	0	0.563424356522281	10
+Transcript-level	repeated_nested_5fold	MDA5-53	230926-IM-U2_BC35	MDA5	0	0.453859337759487	10
+Transcript-level	repeated_nested_5fold	MDA5-47	230926-IM-U3_BC29	MDA5	0	0.503443547311647	10
+Transcript-level	repeated_nested_5fold	MDA5-48	230926-IM-U3_BC30	MDA5	0	0.398451861308464	10
+Transcript-level	repeated_nested_5fold	MDA5-51	230926-IM-U7_BC33	MDA5	0	0.505817940953643	10
+Transcript-level	repeated_nested_5fold	ARS-8	230821-IM-U1_BC28	ARS	1	0.413611974605295	10
+Transcript-level	repeated_nested_5fold	ARS-5	230821-IM-U2_BC25	ARS	1	0.541444798792202	10
+Transcript-level	repeated_nested_5fold	ARS-9	230821-IM-U5_BC29	ARS	1	0.495419884863449	10
+Transcript-level	repeated_nested_5fold	MDA5-4	230821-IM-U5_BC14	MDA5	1	0.419811143808167	10
+Transcript-level	repeated_nested_5fold	ARS-13	230905-IM-U1_BC15	ARS	1	0.393184085688534	10
+Transcript-level	repeated_nested_5fold	ARS-11	230905-IM-U1_BC18	ARS	1	0.156565505839119	10
+Transcript-level	repeated_nested_5fold	ARS-21	230905-IM-U1_BC29	ARS	1	0.234007284566862	10
+Transcript-level	repeated_nested_5fold	ARS-12	230905-IM-U3_BC17	ARS	1	0.664844554206076	10
+Transcript-level	repeated_nested_5fold	ARS-19	230905-IM-U3_BC20	ARS	1	0.60370165446632	10
+Transcript-level	repeated_nested_5fold	ARS-17	230905-IM-U5_BC11	ARS	1	0.711326344166711	10
+Transcript-level	repeated_nested_5fold	ARS-15	230905-IM-U5_BC13	ARS	1	0.493529966119295	10
+Transcript-level	repeated_nested_5fold	ARS-14	230905-IM-U6_BC14	ARS	1	0.410394648703494	10
+Transcript-level	repeated_nested_5fold	MDA5-17	230905-IM-U2_BC26	MDA5	1	0.322862539890873	10
+Transcript-level	repeated_nested_5fold	MDA5-20	230905-IM-U2_BC31	MDA5	1	0.245533427124821	10
+Transcript-level	repeated_nested_5fold	MDA5-12	230905-IM-U5_BC21	MDA5	1	0.417915643431974	10
+Transcript-level	repeated_nested_5fold	MDA5-18	230905-IM-U5_BC28	MDA5	1	0.604201627386355	10
+Transcript-level	repeated_nested_5fold	ARS-34	230914-IM-U1_BC39	ARS	1	0.374968732091235	10
+Transcript-level	repeated_nested_5fold	ARS-30	230914-IM-U2_BC17	ARS	1	0.596359476087999	10
+Transcript-level	repeated_nested_5fold	ARS-29	230914-IM-U3_BC16	ARS	1	0.618637349912601	10
+Transcript-level	repeated_nested_5fold	MDA5-23	230914-IM-U2_BC11	MDA5	1	0.611824909823685	10
+Transcript-level	repeated_nested_5fold	MDA5-35	230914-IM-U2_BC27	MDA5	1	0.459998164278675	10
+Transcript-level	repeated_nested_5fold	MDA5-26	230914-IM-U3_BC14	MDA5	1	0.597649937580088	10
+Transcript-level	repeated_nested_5fold	MDA5-32	230914-IM-U3_BC24	MDA5	1	0.580873301764146	10
+Transcript-level	repeated_nested_5fold	MDA5-27	230914-IM-U5_BC19	MDA5	1	0.48340837152811	10
+Transcript-level	repeated_nested_5fold	MDA5-36	230914-IM-U5_BC28	MDA5	1	0.579129963114914	10
+Transcript-level	repeated_nested_5fold	MDA5-40	230914-IM-U5_BC33	MDA5	1	0.419355784264145	10
+Transcript-level	repeated_nested_5fold	MDA5-42	230914-IM-U6_BC35	MDA5	1	0.381095335141985	10
+Transcript-level	repeated_nested_5fold	MDA5-39	230914-IM-U8_BC31	MDA5	1	0.592644210416326	10
+Transcript-level	repeated_nested_5fold	ARS-40	230926-IM-U2_BC16	ARS	1	0.26959066408473	10
+Transcript-level	repeated_nested_5fold	ARS-42	230926-IM-U3_BC18	ARS	1	0.234116609262885	10
+Transcript-level	repeated_nested_5fold	ARS-44	230926-IM-U3_BC20	ARS	1	0.649160216885385	10
+Transcript-level	repeated_nested_5fold	ARS-39	230926-IM-U6_BC15	ARS	1	0.61117572384419	10
+Transcript-level	repeated_nested_5fold	ARS-45	230926-IM-U6_BC21	ARS	1	0.380416124716601	10
+Transcript-level	repeated_nested_5fold	ARS-49	230926-IM-U6_BC25	ARS	1	0.546426722545638	10
+Transcript-level	repeated_nested_5fold	ARS-41	230926-IM-U7_BC17	ARS	1	0.543136869044453	10
+Transcript-level	repeated_nested_5fold	ARS-37	230926-IM-U8_BC13	ARS	1	0.252793409554807	10
+Transcript-level	repeated_nested_5fold	MDA5-46	230926-IM-U2_BC28	MDA5	1	0.460125560067962	10
+Transcript-level	repeated_nested_5fold	MDA5-55	230926-IM-U2_BC37	MDA5	1	0.465521881365233	10
+Transcript-level	repeated_nested_5fold	MDA5-49	230926-IM-U7_BC31	MDA5	1	0.472521011996446	10
+Transcript-level	held_out_batch	ARS-6	230821-IM-U1_BC26	ARS	0	0.227832825843495	1
+Transcript-level	held_out_batch	ARS-1	230821-IM-U2_BC21	ARS	0	0.591929268317606	1
+Transcript-level	held_out_batch	ARS-4	230821-IM-U4_BC24	ARS	0	0.310407723790698	1
+Transcript-level	held_out_batch	ARS-7	230821-IM-U4_BC27	ARS	0	0.592084738988456	1
+Transcript-level	held_out_batch	ARS-2	230821-IM-U5_BC22	ARS	0	0.495501989486021	1
+Transcript-level	held_out_batch	MDA5-2	230821-IM-U2_BC12	MDA5	0	0.260400983204726	1
+Transcript-level	held_out_batch	MDA5-3	230821-IM-U2_BC13	MDA5	0	0.559554895594705	1
+Transcript-level	held_out_batch	MDA5-6	230821-IM-U2_BC16	MDA5	0	0.449095814151601	1
+Transcript-level	held_out_batch	MDA5-1	230821-IM-U4_BC11	MDA5	0	0.410219842292579	1
+Transcript-level	held_out_batch	MDA5-5	230821-IM-U4_BC15	MDA5	0	0.71770299975879	1
+Transcript-level	held_out_batch	MDA5-8	230821-IM-U4_BC18	MDA5	0	0.352915126432034	1
+Transcript-level	held_out_batch	MDA5-9	230821-IM-U5_BC19	MDA5	0	0.520452336408999	1
+Transcript-level	held_out_batch	ARS-27	230905-IM-U1_BC39	ARS	0	0.385943708220036	1
+Transcript-level	held_out_batch	ARS-24	230905-IM-U2_BC36	ARS	0	0.494383905868729	1
+Transcript-level	held_out_batch	ARS-22	230905-IM-U3_BC34	ARS	0	0.331913552417868	1
+Transcript-level	held_out_batch	ARS-16	230905-IM-U6_BC12	ARS	0	0.345325698012347	1
+Transcript-level	held_out_batch	ARS-20	230905-IM-U6_BC27	ARS	0	0.323985498378173	1
+Transcript-level	held_out_batch	ARS-23	230905-IM-U6_BC35	ARS	0	0.374831561667933	1
+Transcript-level	held_out_batch	ARS-26	230905-IM-U7_BC38	ARS	0	0.397790883979756	1
+Transcript-level	held_out_batch	MDA5-11	230905-IM-U1_BC16	MDA5	0	0.390734066466584	1
+Transcript-level	held_out_batch	MDA5-22	230905-IM-U2_BC33	MDA5	0	0.535043812440691	1
+Transcript-level	held_out_batch	MDA5-13	230905-IM-U3_BC22	MDA5	0	0.397394797316262	1
+Transcript-level	held_out_batch	MDA5-21	230905-IM-U6_BC32	MDA5	0	0.407254735601655	1
+Transcript-level	held_out_batch	MDA5-16	230905-IM-U7_BC25	MDA5	0	0.561373005274985	1
+Transcript-level	held_out_batch	ARS-33	230914-IM-U2_BC37	ARS	0	0.00299948078824253	1
+Transcript-level	held_out_batch	ARS-31	230914-IM-U5_BC18	ARS	0	0.622882787214148	1
+Transcript-level	held_out_batch	ARS-28	230914-IM-U6_BC15	ARS	0	0.215624629836566	1
+Transcript-level	held_out_batch	MDA5-29	230914-IM-U5_BC21	MDA5	0	0.034340166357542	1
+Transcript-level	held_out_batch	MDA5-31	230914-IM-U5_BC23	MDA5	0	0.0241160486788428	1
+Transcript-level	held_out_batch	MDA5-25	230914-IM-U6_BC13	MDA5	0	0.711108971636792	1
+Transcript-level	held_out_batch	MDA5-37	230914-IM-U6_BC29	MDA5	0	0.0287042667453563	1
+Transcript-level	held_out_batch	MDA5-44	230914-IM-U6_BC38	MDA5	0	0.574356578927042	1
+Transcript-level	held_out_batch	MDA5-24	230914-IM-U8_BC12	MDA5	0	0.0277176857272327	1
+Transcript-level	held_out_batch	MDA5-38	230914-IM-U8_BC30	MDA5	0	0.0438611274853438	1
+Transcript-level	held_out_batch	MDA5-43	230914-IM-U8_BC36	MDA5	0	0.468125120740531	1
+Transcript-level	held_out_batch	ARS-48	230926-IM-U2_BC24	ARS	0	0.399428387619439	1
+Transcript-level	held_out_batch	ARS-36	230926-IM-U3_BC12	ARS	0	0.385243512805932	1
+Transcript-level	held_out_batch	ARS-43	230926-IM-U6_BC19	ARS	0	0.850512765879537	1
+Transcript-level	held_out_batch	ARS-47	230926-IM-U6_BC23	ARS	0	0.856964151365141	1
+Transcript-level	held_out_batch	ARS-50	230926-IM-U6_BC27	ARS	0	0.927934045580145	1
+Transcript-level	held_out_batch	ARS-38	230926-IM-U7_BC14	ARS	0	0.299131159029886	1
+Transcript-level	held_out_batch	ARS-35	230926-IM-U8_BC11	ARS	0	0.907986449796964	1
+Transcript-level	held_out_batch	ARS-46	230926-IM-U8_BC22	ARS	0	0.00882065472889781	1
+Transcript-level	held_out_batch	MDA5-52	230926-IM-U1_BC34	MDA5	0	0.418870179147757	1
+Transcript-level	held_out_batch	MDA5-53	230926-IM-U2_BC35	MDA5	0	0.127767597501885	1
+Transcript-level	held_out_batch	MDA5-47	230926-IM-U3_BC29	MDA5	0	0.211342072560107	1
+Transcript-level	held_out_batch	MDA5-48	230926-IM-U3_BC30	MDA5	0	0.299131159029886	1
+Transcript-level	held_out_batch	MDA5-51	230926-IM-U7_BC33	MDA5	0	0.470950095435422	1
+Transcript-level	held_out_batch	ARS-8	230821-IM-U1_BC28	ARS	1	0.302426433402756	1
+Transcript-level	held_out_batch	ARS-5	230821-IM-U2_BC25	ARS	1	0.462157557485064	1
+Transcript-level	held_out_batch	ARS-9	230821-IM-U5_BC29	ARS	1	0.52947461006964	1
+Transcript-level	held_out_batch	MDA5-4	230821-IM-U5_BC14	MDA5	1	0.542782732059124	1
+Transcript-level	held_out_batch	ARS-13	230905-IM-U1_BC15	ARS	1	0.405115423364341	1
+Transcript-level	held_out_batch	ARS-11	230905-IM-U1_BC18	ARS	1	0.399682611158667	1
+Transcript-level	held_out_batch	ARS-21	230905-IM-U1_BC29	ARS	1	0.374891748370356	1
+Transcript-level	held_out_batch	ARS-12	230905-IM-U3_BC17	ARS	1	0.459531805253433	1
+Transcript-level	held_out_batch	ARS-19	230905-IM-U3_BC20	ARS	1	0.438149971414282	1
+Transcript-level	held_out_batch	ARS-17	230905-IM-U5_BC11	ARS	1	0.41002008593559	1
+Transcript-level	held_out_batch	ARS-15	230905-IM-U5_BC13	ARS	1	0.535245541188178	1
+Transcript-level	held_out_batch	ARS-14	230905-IM-U6_BC14	ARS	1	0.405467144593878	1
+Transcript-level	held_out_batch	MDA5-17	230905-IM-U2_BC26	MDA5	1	0.461626904462737	1
+Transcript-level	held_out_batch	MDA5-20	230905-IM-U2_BC31	MDA5	1	0.310005372069313	1
+Transcript-level	held_out_batch	MDA5-12	230905-IM-U5_BC21	MDA5	1	0.416115286593831	1
+Transcript-level	held_out_batch	MDA5-18	230905-IM-U5_BC28	MDA5	1	0.403520222036312	1
+Transcript-level	held_out_batch	ARS-34	230914-IM-U1_BC39	ARS	1	0.129237939037671	1
+Transcript-level	held_out_batch	ARS-30	230914-IM-U2_BC17	ARS	1	0.725239915865356	1
+Transcript-level	held_out_batch	ARS-29	230914-IM-U3_BC16	ARS	1	0.39300453061871	1
+Transcript-level	held_out_batch	MDA5-23	230914-IM-U2_BC11	MDA5	1	0.605567358390867	1
+Transcript-level	held_out_batch	MDA5-35	230914-IM-U2_BC27	MDA5	1	0.128575796087518	1
+Transcript-level	held_out_batch	MDA5-26	230914-IM-U3_BC14	MDA5	1	0.684774287900134	1
+Transcript-level	held_out_batch	MDA5-32	230914-IM-U3_BC24	MDA5	1	0.618449168570004	1
+Transcript-level	held_out_batch	MDA5-27	230914-IM-U5_BC19	MDA5	1	0.674927515913228	1
+Transcript-level	held_out_batch	MDA5-36	230914-IM-U5_BC28	MDA5	1	0.618724179175699	1
+Transcript-level	held_out_batch	MDA5-40	230914-IM-U5_BC33	MDA5	1	0.628235048067306	1
+Transcript-level	held_out_batch	MDA5-42	230914-IM-U6_BC35	MDA5	1	0.565353842442679	1
+Transcript-level	held_out_batch	MDA5-39	230914-IM-U8_BC31	MDA5	1	0.0670244001002585	1
+Transcript-level	held_out_batch	ARS-40	230926-IM-U2_BC16	ARS	1	0.565483697189019	1
+Transcript-level	held_out_batch	ARS-42	230926-IM-U3_BC18	ARS	1	0.299131159029886	1
+Transcript-level	held_out_batch	ARS-44	230926-IM-U3_BC20	ARS	1	0.824080248945734	1
+Transcript-level	held_out_batch	ARS-39	230926-IM-U6_BC15	ARS	1	0.745562690577271	1
+Transcript-level	held_out_batch	ARS-45	230926-IM-U6_BC21	ARS	1	0.891197917604967	1
+Transcript-level	held_out_batch	ARS-49	230926-IM-U6_BC25	ARS	1	0.669661356284698	1
+Transcript-level	held_out_batch	ARS-41	230926-IM-U7_BC17	ARS	1	0.791894435530452	1
+Transcript-level	held_out_batch	ARS-37	230926-IM-U8_BC13	ARS	1	0.299131159029886	1
+Transcript-level	held_out_batch	MDA5-46	230926-IM-U2_BC28	MDA5	1	0.163057272883392	1
+Transcript-level	held_out_batch	MDA5-55	230926-IM-U2_BC37	MDA5	1	0.103071214096182	1
+Transcript-level	held_out_batch	MDA5-49	230926-IM-U7_BC31	MDA5	1	0.961734024248944	1
+Autoantibody-only	repeated_nested_5fold	ARS-19	230905-IM-U3_BC20	ARS	1	0.49015444015444	10
+Autoantibody-only	repeated_nested_5fold	ARS-20	230905-IM-U6_BC27	ARS	0	0.488803088803089	10
+Autoantibody-only	repeated_nested_5fold	ARS-26	230905-IM-U7_BC38	ARS	0	0.487528957528958	10
+Autoantibody-only	repeated_nested_5fold	ARS-27	230905-IM-U1_BC39	ARS	0	0.489034749034749	10
+Autoantibody-only	repeated_nested_5fold	ARS-31	230914-IM-U5_BC18	ARS	0	0.487297297297297	10
+Autoantibody-only	repeated_nested_5fold	ARS-4	230821-IM-U4_BC24	ARS	0	0.49030888030888	10
+Autoantibody-only	repeated_nested_5fold	ARS-40	230926-IM-U2_BC16	ARS	1	0.4903861003861	10
+Autoantibody-only	repeated_nested_5fold	ARS-41	230926-IM-U7_BC17	ARS	1	0.488957528957529	10
+Autoantibody-only	repeated_nested_5fold	ARS-45	230926-IM-U6_BC21	ARS	1	0.488725868725869	10
+Autoantibody-only	repeated_nested_5fold	ARS-9	230821-IM-U5_BC29	ARS	1	0.488880308880309	10
+Autoantibody-only	repeated_nested_5fold	MDA5-13	230905-IM-U3_BC22	MDA5	0	0.40463458110517	10
+Autoantibody-only	repeated_nested_5fold	MDA5-22	230905-IM-U2_BC33	MDA5	0	0.402852049910874	10
+Autoantibody-only	repeated_nested_5fold	MDA5-23	230914-IM-U2_BC11	MDA5	1	0.406417112299465	10
+Autoantibody-only	repeated_nested_5fold	MDA5-27	230914-IM-U5_BC19	MDA5	1	0.399286987522282	10
+Autoantibody-only	repeated_nested_5fold	MDA5-35	230914-IM-U2_BC27	MDA5	1	0.402852049910874	10
+Autoantibody-only	repeated_nested_5fold	MDA5-5	230821-IM-U4_BC15	MDA5	0	0.402852049910874	10
+Autoantibody-only	repeated_nested_5fold	MDA5-55	230926-IM-U2_BC37	MDA5	1	0.402852049910874	10
+Autoantibody-only	repeated_nested_5fold	MDA5-8	230821-IM-U4_BC18	MDA5	0	0.402852049910874	10
+Autoantibody-only	repeated_nested_5fold	MDA5-9	230821-IM-U5_BC19	MDA5	0	0.406417112299465	10
+Clinical-only	repeated_nested_5fold	ARS-19	230905-IM-U3_BC20	ARS	1	0.544052057209173	10
+Clinical-only	repeated_nested_5fold	ARS-20	230905-IM-U6_BC27	ARS	0	0.450894679649971	10
+Clinical-only	repeated_nested_5fold	ARS-26	230905-IM-U7_BC38	ARS	0	0.61240488456317	10
+Clinical-only	repeated_nested_5fold	ARS-27	230905-IM-U1_BC39	ARS	0	0.413471952332852	10
+Clinical-only	repeated_nested_5fold	ARS-31	230914-IM-U5_BC18	ARS	0	0.635279899725177	10
+Clinical-only	repeated_nested_5fold	ARS-4	230821-IM-U4_BC24	ARS	0	0.289085005937289	10
+Clinical-only	repeated_nested_5fold	ARS-40	230926-IM-U2_BC16	ARS	1	0.488445037705287	10
+Clinical-only	repeated_nested_5fold	ARS-41	230926-IM-U7_BC17	ARS	1	0.468962599024031	10
+Clinical-only	repeated_nested_5fold	ARS-45	230926-IM-U6_BC21	ARS	1	0.596542919424058	10
+Clinical-only	repeated_nested_5fold	ARS-9	230821-IM-U5_BC29	ARS	1	0.56520081148731	10
+Clinical-only	repeated_nested_5fold	MDA5-13	230905-IM-U3_BC22	MDA5	0	0.577546790782592	10
+Clinical-only	repeated_nested_5fold	MDA5-22	230905-IM-U2_BC33	MDA5	0	0.374966101319202	10
+Clinical-only	repeated_nested_5fold	MDA5-23	230914-IM-U2_BC11	MDA5	1	0.520449486550522	10
+Clinical-only	repeated_nested_5fold	MDA5-27	230914-IM-U5_BC19	MDA5	1	0.392329823516955	10
+Clinical-only	repeated_nested_5fold	MDA5-35	230914-IM-U2_BC27	MDA5	1	0.576553351977663	10
+Clinical-only	repeated_nested_5fold	MDA5-5	230821-IM-U4_BC15	MDA5	0	0.464607530363146	10
+Clinical-only	repeated_nested_5fold	MDA5-55	230926-IM-U2_BC37	MDA5	1	0.353252375039036	10
+Clinical-only	repeated_nested_5fold	MDA5-8	230821-IM-U4_BC18	MDA5	0	0.38912229354471	10
+Clinical-only	repeated_nested_5fold	MDA5-9	230821-IM-U5_BC19	MDA5	0	0.422544138214906	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-19	230905-IM-U3_BC20	ARS	1	0.51976307403756	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-20	230905-IM-U6_BC27	ARS	0	0.472297976747784	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-26	230905-IM-U7_BC38	ARS	0	0.594416602866706	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-27	230905-IM-U1_BC39	ARS	0	0.491992503952107	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-31	230914-IM-U5_BC18	ARS	0	0.335139573460583	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-4	230821-IM-U4_BC24	ARS	0	0.121509593282651	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-40	230926-IM-U2_BC16	ARS	1	0.567619998821934	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-41	230926-IM-U7_BC17	ARS	1	0.772462687772321	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-45	230926-IM-U6_BC21	ARS	1	0.561665703949112	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-9	230821-IM-U5_BC29	ARS	1	0.908685654526534	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-13	230905-IM-U3_BC22	MDA5	0	0.679978239255036	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-22	230905-IM-U2_BC33	MDA5	0	0.565236050088383	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-23	230914-IM-U2_BC11	MDA5	1	0.639282545101881	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-27	230914-IM-U5_BC19	MDA5	1	0.327048389614965	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-35	230914-IM-U2_BC27	MDA5	1	0.55222928229204	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-5	230821-IM-U4_BC15	MDA5	0	0.284147010326221	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-55	230926-IM-U2_BC37	MDA5	1	0.551230487598715	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-8	230821-IM-U4_BC18	MDA5	0	0.267507070230376	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-9	230821-IM-U5_BC19	MDA5	0	0.211917084157569	10
+Combined	repeated_nested_5fold	ARS-19	230905-IM-U3_BC20	ARS	1	0.48839912265918	10
+Combined	repeated_nested_5fold	ARS-20	230905-IM-U6_BC27	ARS	0	0.502947468213509	10
+Combined	repeated_nested_5fold	ARS-26	230905-IM-U7_BC38	ARS	0	0.605917917569515	10
+Combined	repeated_nested_5fold	ARS-27	230905-IM-U1_BC39	ARS	0	0.503164594432635	10
+Combined	repeated_nested_5fold	ARS-31	230914-IM-U5_BC18	ARS	0	0.395063696908006	10
+Combined	repeated_nested_5fold	ARS-4	230821-IM-U4_BC24	ARS	0	0.265535590896553	10
+Combined	repeated_nested_5fold	ARS-40	230926-IM-U2_BC16	ARS	1	0.538080273814261	10
+Combined	repeated_nested_5fold	ARS-41	230926-IM-U7_BC17	ARS	1	0.623370741767747	10
+Combined	repeated_nested_5fold	ARS-45	230926-IM-U6_BC21	ARS	1	0.567957139269571	10
+Combined	repeated_nested_5fold	ARS-9	230821-IM-U5_BC29	ARS	1	0.758280755884243	10
+Combined	repeated_nested_5fold	MDA5-13	230905-IM-U3_BC22	MDA5	0	0.558245171334567	10
+Combined	repeated_nested_5fold	MDA5-22	230905-IM-U2_BC33	MDA5	0	0.493127867528582	10
+Combined	repeated_nested_5fold	MDA5-23	230914-IM-U2_BC11	MDA5	1	0.579122591540897	10
+Combined	repeated_nested_5fold	MDA5-27	230914-IM-U5_BC19	MDA5	1	0.371024359705945	10
+Combined	repeated_nested_5fold	MDA5-35	230914-IM-U2_BC27	MDA5	1	0.5312238467721	10
+Combined	repeated_nested_5fold	MDA5-5	230821-IM-U4_BC15	MDA5	0	0.304054059314671	10
+Combined	repeated_nested_5fold	MDA5-55	230926-IM-U2_BC37	MDA5	1	0.542551609015938	10
+Combined	repeated_nested_5fold	MDA5-8	230821-IM-U4_BC18	MDA5	0	0.376399363451284	10
+Combined	repeated_nested_5fold	MDA5-9	230821-IM-U5_BC19	MDA5	0	0.285560557974447	10
+Autoantibody-only	repeated_nested_5fold	ARS-11	230905-IM-U1_BC18	ARS	1	0.49015444015444	10
+Autoantibody-only	repeated_nested_5fold	ARS-12	230905-IM-U3_BC17	ARS	1	0.485945945945946	10
+Autoantibody-only	repeated_nested_5fold	ARS-15	230905-IM-U5_BC13	ARS	1	0.49023166023166	10
+Autoantibody-only	repeated_nested_5fold	ARS-2	230821-IM-U5_BC22	ARS	0	0.488880308880309	10
+Autoantibody-only	repeated_nested_5fold	ARS-23	230905-IM-U6_BC35	ARS	0	0.488803088803089	10
+Autoantibody-only	repeated_nested_5fold	ARS-30	230914-IM-U2_BC17	ARS	1	0.487451737451737	10
+Autoantibody-only	repeated_nested_5fold	ARS-33	230914-IM-U2_BC37	ARS	0	0.49023166023166	10
+Autoantibody-only	repeated_nested_5fold	ARS-34	230914-IM-U1_BC39	ARS	1	0.488648648648649	10
+Autoantibody-only	repeated_nested_5fold	ARS-38	230926-IM-U7_BC14	ARS	0	0.491583011583012	10
+Autoantibody-only	repeated_nested_5fold	ARS-6	230821-IM-U1_BC26	ARS	0	0.488648648648649	10
+Autoantibody-only	repeated_nested_5fold	MDA5-12	230905-IM-U5_BC21	MDA5	1	0.406417112299465	10
+Autoantibody-only	repeated_nested_5fold	MDA5-17	230905-IM-U2_BC26	MDA5	1	0.401069518716578	10
+Autoantibody-only	repeated_nested_5fold	MDA5-24	230914-IM-U8_BC12	MDA5	0	0.40463458110517	10
+Autoantibody-only	repeated_nested_5fold	MDA5-25	230914-IM-U6_BC13	MDA5	0	0.406417112299465	10
+Autoantibody-only	repeated_nested_5fold	MDA5-31	230914-IM-U5_BC23	MDA5	0	0.408199643493761	10
+Autoantibody-only	repeated_nested_5fold	MDA5-32	230914-IM-U3_BC24	MDA5	1	0.401069518716578	10
+Autoantibody-only	repeated_nested_5fold	MDA5-37	230914-IM-U6_BC29	MDA5	0	0.408199643493761	10
+Autoantibody-only	repeated_nested_5fold	MDA5-42	230914-IM-U6_BC35	MDA5	1	0.404634581105169	10
+Autoantibody-only	repeated_nested_5fold	MDA5-52	230926-IM-U1_BC34	MDA5	0	0.401069518716578	10
+Clinical-only	repeated_nested_5fold	ARS-11	230905-IM-U1_BC18	ARS	1	0.470895634383508	10
+Clinical-only	repeated_nested_5fold	ARS-12	230905-IM-U3_BC17	ARS	1	0.510870882439905	10
+Clinical-only	repeated_nested_5fold	ARS-15	230905-IM-U5_BC13	ARS	1	0.555465102299329	10
+Clinical-only	repeated_nested_5fold	ARS-2	230821-IM-U5_BC22	ARS	0	0.463669254543818	10
+Clinical-only	repeated_nested_5fold	ARS-23	230905-IM-U6_BC35	ARS	0	0.565940199070375	10
+Clinical-only	repeated_nested_5fold	ARS-30	230914-IM-U2_BC17	ARS	1	0.509999896499848	10
+Clinical-only	repeated_nested_5fold	ARS-33	230914-IM-U2_BC37	ARS	0	0.575211695668029	10
+Clinical-only	repeated_nested_5fold	ARS-34	230914-IM-U1_BC39	ARS	1	0.568786573935335	10
+Clinical-only	repeated_nested_5fold	ARS-38	230926-IM-U7_BC14	ARS	0	0.470478837552332	10
+Clinical-only	repeated_nested_5fold	ARS-6	230821-IM-U1_BC26	ARS	0	0.493808942848839	10
+Clinical-only	repeated_nested_5fold	MDA5-12	230905-IM-U5_BC21	MDA5	1	0.54205654321589	10
+Clinical-only	repeated_nested_5fold	MDA5-17	230905-IM-U2_BC26	MDA5	1	0.602635871041501	10
+Clinical-only	repeated_nested_5fold	MDA5-24	230914-IM-U8_BC12	MDA5	0	0.406302721259247	10
+Clinical-only	repeated_nested_5fold	MDA5-25	230914-IM-U6_BC13	MDA5	0	0.649601489759709	10
+Clinical-only	repeated_nested_5fold	MDA5-31	230914-IM-U5_BC23	MDA5	0	0.505433551352966	10
+Clinical-only	repeated_nested_5fold	MDA5-32	230914-IM-U3_BC24	MDA5	1	0.523899180438833	10
+Clinical-only	repeated_nested_5fold	MDA5-37	230914-IM-U6_BC29	MDA5	0	0.432931117211368	10
+Clinical-only	repeated_nested_5fold	MDA5-42	230914-IM-U6_BC35	MDA5	1	0.451693663345892	10
+Clinical-only	repeated_nested_5fold	MDA5-52	230926-IM-U1_BC34	MDA5	0	0.413505739281361	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-11	230905-IM-U1_BC18	ARS	1	0.598683844882545	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-12	230905-IM-U3_BC17	ARS	1	0.485177074405474	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-15	230905-IM-U5_BC13	ARS	1	0.386132897981044	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-2	230821-IM-U5_BC22	ARS	0	0.210681179679784	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-23	230905-IM-U6_BC35	ARS	0	0.735629817497854	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-30	230914-IM-U2_BC17	ARS	1	0.73235331757296	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-33	230914-IM-U2_BC37	ARS	0	0.375289799270335	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-34	230914-IM-U1_BC39	ARS	1	0.710031439259407	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-38	230926-IM-U7_BC14	ARS	0	0.428357956756827	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-6	230821-IM-U1_BC26	ARS	0	0.421182888487857	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-12	230905-IM-U5_BC21	MDA5	1	0.28606283310575	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-17	230905-IM-U2_BC26	MDA5	1	0.569924083495103	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-24	230914-IM-U8_BC12	MDA5	0	0.238826117948972	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-25	230914-IM-U6_BC13	MDA5	0	0.476245367277322	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-31	230914-IM-U5_BC23	MDA5	0	0.378820916245768	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-32	230914-IM-U3_BC24	MDA5	1	0.768879808182188	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-37	230914-IM-U6_BC29	MDA5	0	0.557343964926426	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-42	230914-IM-U6_BC35	MDA5	1	0.423954305804812	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-52	230926-IM-U1_BC34	MDA5	0	0.192377846521792	10
+Combined	repeated_nested_5fold	ARS-11	230905-IM-U1_BC18	ARS	1	0.490524559605039	10
+Combined	repeated_nested_5fold	ARS-12	230905-IM-U3_BC17	ARS	1	0.479883496552326	10
+Combined	repeated_nested_5fold	ARS-15	230905-IM-U5_BC13	ARS	1	0.483076218840619	10
+Combined	repeated_nested_5fold	ARS-2	230821-IM-U5_BC22	ARS	0	0.287083006051534	10
+Combined	repeated_nested_5fold	ARS-23	230905-IM-U6_BC35	ARS	0	0.695860827474075	10
+Combined	repeated_nested_5fold	ARS-30	230914-IM-U2_BC17	ARS	1	0.677831407901824	10
+Combined	repeated_nested_5fold	ARS-33	230914-IM-U2_BC37	ARS	0	0.453975961844941	10
+Combined	repeated_nested_5fold	ARS-34	230914-IM-U1_BC39	ARS	1	0.630190453691593	10
+Combined	repeated_nested_5fold	ARS-38	230926-IM-U7_BC14	ARS	0	0.449907151258618	10
+Combined	repeated_nested_5fold	ARS-6	230821-IM-U1_BC26	ARS	0	0.493018453973528	10
+Combined	repeated_nested_5fold	MDA5-12	230905-IM-U5_BC21	MDA5	1	0.446040437349629	10
+Combined	repeated_nested_5fold	MDA5-17	230905-IM-U2_BC26	MDA5	1	0.55790827541494	10
+Combined	repeated_nested_5fold	MDA5-24	230914-IM-U8_BC12	MDA5	0	0.334908639578831	10
+Combined	repeated_nested_5fold	MDA5-25	230914-IM-U6_BC13	MDA5	0	0.551701056328745	10
+Combined	repeated_nested_5fold	MDA5-31	230914-IM-U5_BC23	MDA5	0	0.444189755093653	10
+Combined	repeated_nested_5fold	MDA5-32	230914-IM-U3_BC24	MDA5	1	0.667660123505052	10
+Combined	repeated_nested_5fold	MDA5-37	230914-IM-U6_BC29	MDA5	0	0.511216221489602	10
+Combined	repeated_nested_5fold	MDA5-42	230914-IM-U6_BC35	MDA5	1	0.442677123034458	10
+Combined	repeated_nested_5fold	MDA5-52	230926-IM-U1_BC34	MDA5	0	0.28726074175777	10
+Autoantibody-only	repeated_nested_5fold	ARS-14	230905-IM-U6_BC14	ARS	1	0.49030888030888	10
+Autoantibody-only	repeated_nested_5fold	ARS-16	230905-IM-U6_BC12	ARS	0	0.49023166023166	10
+Autoantibody-only	repeated_nested_5fold	ARS-28	230914-IM-U6_BC15	ARS	0	0.487451737451737	10
+Autoantibody-only	repeated_nested_5fold	ARS-36	230926-IM-U3_BC12	ARS	0	0.492934362934363	10
+Autoantibody-only	repeated_nested_5fold	ARS-39	230926-IM-U6_BC15	ARS	1	0.487528957528958	10
+Autoantibody-only	repeated_nested_5fold	ARS-42	230926-IM-U3_BC18	ARS	1	0.49007722007722	10
+Autoantibody-only	repeated_nested_5fold	ARS-46	230926-IM-U8_BC22	ARS	0	0.49030888030888	10
+Autoantibody-only	repeated_nested_5fold	ARS-7	230821-IM-U4_BC27	ARS	0	0.49015444015444	10
+Autoantibody-only	repeated_nested_5fold	ARS-8	230821-IM-U1_BC28	ARS	1	0.49023166023166	10
+Autoantibody-only	repeated_nested_5fold	MDA5-1	230821-IM-U4_BC11	MDA5	0	0.406417112299465	10
+Autoantibody-only	repeated_nested_5fold	MDA5-11	230905-IM-U1_BC16	MDA5	0	0.401069518716578	10
+Autoantibody-only	repeated_nested_5fold	MDA5-16	230905-IM-U7_BC25	MDA5	0	0.40463458110517	10
+Autoantibody-only	repeated_nested_5fold	MDA5-26	230914-IM-U3_BC14	MDA5	1	0.408199643493761	10
+Autoantibody-only	repeated_nested_5fold	MDA5-4	230821-IM-U5_BC14	MDA5	1	0.401069518716578	10
+Autoantibody-only	repeated_nested_5fold	MDA5-49	230926-IM-U7_BC31	MDA5	1	0.404634581105169	10
+Autoantibody-only	repeated_nested_5fold	MDA5-51	230926-IM-U7_BC33	MDA5	0	0.40463458110517	10
+Autoantibody-only	repeated_nested_5fold	MDA5-6	230821-IM-U2_BC16	MDA5	0	0.406417112299465	10
+Clinical-only	repeated_nested_5fold	ARS-14	230905-IM-U6_BC14	ARS	1	0.42499646069493	10
+Clinical-only	repeated_nested_5fold	ARS-16	230905-IM-U6_BC12	ARS	0	0.419553031114261	10
+Clinical-only	repeated_nested_5fold	ARS-28	230914-IM-U6_BC15	ARS	0	0.474800079311984	10
+Clinical-only	repeated_nested_5fold	ARS-36	230926-IM-U3_BC12	ARS	0	0.568464362547086	10
+Clinical-only	repeated_nested_5fold	ARS-39	230926-IM-U6_BC15	ARS	1	0.507168451792079	10
+Clinical-only	repeated_nested_5fold	ARS-42	230926-IM-U3_BC18	ARS	1	0.604675322335472	10
+Clinical-only	repeated_nested_5fold	ARS-46	230926-IM-U8_BC22	ARS	0	0.4871556636204	10
+Clinical-only	repeated_nested_5fold	ARS-7	230821-IM-U4_BC27	ARS	0	0.425722540707715	10
+Clinical-only	repeated_nested_5fold	ARS-8	230821-IM-U1_BC28	ARS	1	0.618190860184921	10
+Clinical-only	repeated_nested_5fold	MDA5-1	230821-IM-U4_BC11	MDA5	0	0.584878165854122	10
+Clinical-only	repeated_nested_5fold	MDA5-11	230905-IM-U1_BC16	MDA5	0	0.646532310191607	10
+Clinical-only	repeated_nested_5fold	MDA5-16	230905-IM-U7_BC25	MDA5	0	0.403320289971027	10
+Clinical-only	repeated_nested_5fold	MDA5-26	230914-IM-U3_BC14	MDA5	1	0.594095804896225	10
+Clinical-only	repeated_nested_5fold	MDA5-4	230821-IM-U5_BC14	MDA5	1	0.49379842847153	10
+Clinical-only	repeated_nested_5fold	MDA5-49	230926-IM-U7_BC31	MDA5	1	0.515152793241455	10
+Clinical-only	repeated_nested_5fold	MDA5-51	230926-IM-U7_BC33	MDA5	0	0.489742862888847	10
+Clinical-only	repeated_nested_5fold	MDA5-6	230821-IM-U2_BC16	MDA5	0	0.421264640243395	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-14	230905-IM-U6_BC14	ARS	1	0.494377638436149	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-16	230905-IM-U6_BC12	ARS	0	0.714419680031076	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-28	230914-IM-U6_BC15	ARS	0	0.342245869824908	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-36	230926-IM-U3_BC12	ARS	0	0.627243515513013	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-39	230926-IM-U6_BC15	ARS	1	0.618855230737092	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-42	230926-IM-U3_BC18	ARS	1	0.59058972658911	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-46	230926-IM-U8_BC22	ARS	0	0.272978402756157	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-7	230821-IM-U4_BC27	ARS	0	0.506534598819447	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-8	230821-IM-U1_BC28	ARS	1	0.838720962902453	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-1	230821-IM-U4_BC11	MDA5	0	0.409133792213792	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-11	230905-IM-U1_BC16	MDA5	0	0.642640499599824	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-16	230905-IM-U7_BC25	MDA5	0	0.367452169252277	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-26	230914-IM-U3_BC14	MDA5	1	0.621335354265797	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-4	230821-IM-U5_BC14	MDA5	1	0.411602871933103	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-49	230926-IM-U7_BC31	MDA5	1	0.307738381071683	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-51	230926-IM-U7_BC33	MDA5	0	0.158116179672841	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-6	230821-IM-U2_BC16	MDA5	0	0.29398682388213	10
+Combined	repeated_nested_5fold	ARS-14	230905-IM-U6_BC14	ARS	1	0.471930525100176	10
+Combined	repeated_nested_5fold	ARS-16	230905-IM-U6_BC12	ARS	0	0.643316901153616	10
+Combined	repeated_nested_5fold	ARS-28	230914-IM-U6_BC15	ARS	0	0.424647680246555	10
+Combined	repeated_nested_5fold	ARS-36	230926-IM-U3_BC12	ARS	0	0.622872986344808	10
+Combined	repeated_nested_5fold	ARS-39	230926-IM-U6_BC15	ARS	1	0.492753501495092	10
+Combined	repeated_nested_5fold	ARS-42	230926-IM-U3_BC18	ARS	1	0.524511953175976	10
+Combined	repeated_nested_5fold	ARS-46	230926-IM-U8_BC22	ARS	0	0.393868036087682	10
+Combined	repeated_nested_5fold	ARS-7	230821-IM-U4_BC27	ARS	0	0.44062118192784	10
+Combined	repeated_nested_5fold	ARS-8	230821-IM-U1_BC28	ARS	1	0.7823632842678	10
+Combined	repeated_nested_5fold	MDA5-1	230821-IM-U4_BC11	MDA5	0	0.4959727775237	10
+Combined	repeated_nested_5fold	MDA5-11	230905-IM-U1_BC16	MDA5	0	0.66430970703406	10
+Combined	repeated_nested_5fold	MDA5-16	230905-IM-U7_BC25	MDA5	0	0.350740845709565	10
+Combined	repeated_nested_5fold	MDA5-26	230914-IM-U3_BC14	MDA5	1	0.666012356862064	10
+Combined	repeated_nested_5fold	MDA5-4	230821-IM-U5_BC14	MDA5	1	0.397030391636909	10
+Combined	repeated_nested_5fold	MDA5-49	230926-IM-U7_BC31	MDA5	1	0.343124382987082	10
+Combined	repeated_nested_5fold	MDA5-51	230926-IM-U7_BC33	MDA5	0	0.263766667417359	10
+Combined	repeated_nested_5fold	MDA5-6	230821-IM-U2_BC16	MDA5	0	0.409291501676499	10
+Autoantibody-only	repeated_nested_5fold	ARS-13	230905-IM-U1_BC15	ARS	1	0.487683397683398	10
+Autoantibody-only	repeated_nested_5fold	ARS-17	230905-IM-U5_BC11	ARS	1	0.488803088803089	10
+Autoantibody-only	repeated_nested_5fold	ARS-21	230905-IM-U1_BC29	ARS	1	0.488880308880309	10
+Autoantibody-only	repeated_nested_5fold	ARS-22	230905-IM-U3_BC34	ARS	0	0.488957528957529	10
+Autoantibody-only	repeated_nested_5fold	ARS-35	230926-IM-U8_BC11	ARS	0	0.486254826254826	10
+Autoantibody-only	repeated_nested_5fold	ARS-43	230926-IM-U6_BC19	ARS	0	0.491583011583012	10
+Autoantibody-only	repeated_nested_5fold	ARS-44	230926-IM-U3_BC20	ARS	1	0.489034749034749	10
+Autoantibody-only	repeated_nested_5fold	ARS-47	230926-IM-U6_BC23	ARS	0	0.486177606177606	10
+Autoantibody-only	repeated_nested_5fold	MDA5-2	230821-IM-U2_BC12	MDA5	0	0.401069518716578	10
+Autoantibody-only	repeated_nested_5fold	MDA5-20	230905-IM-U2_BC31	MDA5	1	0.406417112299465	10
+Autoantibody-only	repeated_nested_5fold	MDA5-21	230905-IM-U6_BC32	MDA5	0	0.408199643493761	10
+Autoantibody-only	repeated_nested_5fold	MDA5-3	230821-IM-U2_BC13	MDA5	0	0.406417112299465	10
+Autoantibody-only	repeated_nested_5fold	MDA5-38	230914-IM-U8_BC30	MDA5	0	0.406417112299465	10
+Autoantibody-only	repeated_nested_5fold	MDA5-39	230914-IM-U8_BC31	MDA5	1	0.40463458110517	10
+Autoantibody-only	repeated_nested_5fold	MDA5-44	230914-IM-U6_BC38	MDA5	0	0.399286987522282	10
+Autoantibody-only	repeated_nested_5fold	MDA5-46	230926-IM-U2_BC28	MDA5	1	0.40463458110517	10
+Clinical-only	repeated_nested_5fold	ARS-13	230905-IM-U1_BC15	ARS	1	0.60925054200741	10
+Clinical-only	repeated_nested_5fold	ARS-17	230905-IM-U5_BC11	ARS	1	0.338678566481946	10
+Clinical-only	repeated_nested_5fold	ARS-21	230905-IM-U1_BC29	ARS	1	0.541890979344303	10
+Clinical-only	repeated_nested_5fold	ARS-22	230905-IM-U3_BC34	ARS	0	0.530508257475212	10
+Clinical-only	repeated_nested_5fold	ARS-35	230926-IM-U8_BC11	ARS	0	0.535649423093818	10
+Clinical-only	repeated_nested_5fold	ARS-43	230926-IM-U6_BC19	ARS	0	0.456225239756768	10
+Clinical-only	repeated_nested_5fold	ARS-44	230926-IM-U3_BC20	ARS	1	0.403999526325765	10
+Clinical-only	repeated_nested_5fold	ARS-47	230926-IM-U6_BC23	ARS	0	0.411180135964862	10
+Clinical-only	repeated_nested_5fold	MDA5-2	230821-IM-U2_BC12	MDA5	0	0.462874389021131	10
+Clinical-only	repeated_nested_5fold	MDA5-20	230905-IM-U2_BC31	MDA5	1	0.366645345329464	10
+Clinical-only	repeated_nested_5fold	MDA5-21	230905-IM-U6_BC32	MDA5	0	0.395179482652547	10
+Clinical-only	repeated_nested_5fold	MDA5-3	230821-IM-U2_BC13	MDA5	0	0.568897802209088	10
+Clinical-only	repeated_nested_5fold	MDA5-38	230914-IM-U8_BC30	MDA5	0	0.46626684435872	10
+Clinical-only	repeated_nested_5fold	MDA5-39	230914-IM-U8_BC31	MDA5	1	0.556025931841499	10
+Clinical-only	repeated_nested_5fold	MDA5-44	230914-IM-U6_BC38	MDA5	0	0.54338968214926	10
+Clinical-only	repeated_nested_5fold	MDA5-46	230926-IM-U2_BC28	MDA5	1	0.382840420951001	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-13	230905-IM-U1_BC15	ARS	1	0.469995284625649	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-17	230905-IM-U5_BC11	ARS	1	0.295225984186847	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-21	230905-IM-U1_BC29	ARS	1	0.544174596798008	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-22	230905-IM-U3_BC34	ARS	0	0.236057530371108	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-35	230926-IM-U8_BC11	ARS	0	0.424892554968415	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-43	230926-IM-U6_BC19	ARS	0	0.430532520380896	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-44	230926-IM-U3_BC20	ARS	1	0.486970286836331	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-47	230926-IM-U6_BC23	ARS	0	0.558463366278124	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-2	230821-IM-U2_BC12	MDA5	0	0.459287025649426	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-20	230905-IM-U2_BC31	MDA5	1	0.295280884161353	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-21	230905-IM-U6_BC32	MDA5	0	0.566105842621158	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-3	230821-IM-U2_BC13	MDA5	0	0.645846814312653	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-38	230914-IM-U8_BC30	MDA5	0	0.52433259520333	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-39	230914-IM-U8_BC31	MDA5	1	0.138265741872635	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-44	230914-IM-U6_BC38	MDA5	0	0.373096645051143	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-46	230926-IM-U2_BC28	MDA5	1	0.621099490884905	10
+Combined	repeated_nested_5fold	ARS-13	230905-IM-U1_BC15	ARS	1	0.521532880280723	10
+Combined	repeated_nested_5fold	ARS-17	230905-IM-U5_BC11	ARS	1	0.31895049468918	10
+Combined	repeated_nested_5fold	ARS-21	230905-IM-U1_BC29	ARS	1	0.586516482749782	10
+Combined	repeated_nested_5fold	ARS-22	230905-IM-U3_BC34	ARS	0	0.412480766338872	10
+Combined	repeated_nested_5fold	ARS-35	230926-IM-U8_BC11	ARS	0	0.431439642938908	10
+Combined	repeated_nested_5fold	ARS-43	230926-IM-U6_BC19	ARS	0	0.468394727070827	10
+Combined	repeated_nested_5fold	ARS-44	230926-IM-U3_BC20	ARS	1	0.427955350473916	10
+Combined	repeated_nested_5fold	ARS-47	230926-IM-U6_BC23	ARS	0	0.496766096482166	10
+Combined	repeated_nested_5fold	MDA5-2	230821-IM-U2_BC12	MDA5	0	0.476850379461357	10
+Combined	repeated_nested_5fold	MDA5-20	230905-IM-U2_BC31	MDA5	1	0.241707061462682	10
+Combined	repeated_nested_5fold	MDA5-21	230905-IM-U6_BC32	MDA5	0	0.534227877335787	10
+Combined	repeated_nested_5fold	MDA5-3	230821-IM-U2_BC13	MDA5	0	0.598024381841514	10
+Combined	repeated_nested_5fold	MDA5-38	230914-IM-U8_BC30	MDA5	0	0.480908625809211	10
+Combined	repeated_nested_5fold	MDA5-39	230914-IM-U8_BC31	MDA5	1	0.227310187581588	10
+Combined	repeated_nested_5fold	MDA5-44	230914-IM-U6_BC38	MDA5	0	0.470191617681015	10
+Combined	repeated_nested_5fold	MDA5-46	230926-IM-U2_BC28	MDA5	1	0.46493021618368	10
+Autoantibody-only	repeated_nested_5fold	ARS-1	230821-IM-U2_BC21	ARS	0	0.49015444015444	10
+Autoantibody-only	repeated_nested_5fold	ARS-24	230905-IM-U2_BC36	ARS	0	0.487297297297297	10
+Autoantibody-only	repeated_nested_5fold	ARS-29	230914-IM-U3_BC16	ARS	1	0.485945945945946	10
+Autoantibody-only	repeated_nested_5fold	ARS-37	230926-IM-U8_BC13	ARS	1	0.487606177606178	10
+Autoantibody-only	repeated_nested_5fold	ARS-48	230926-IM-U2_BC24	ARS	0	0.488957528957529	10
+Autoantibody-only	repeated_nested_5fold	ARS-49	230926-IM-U6_BC25	ARS	1	0.486100386100386	10
+Autoantibody-only	repeated_nested_5fold	ARS-5	230821-IM-U2_BC25	ARS	1	0.487297297297297	10
+Autoantibody-only	repeated_nested_5fold	ARS-50	230926-IM-U6_BC27	ARS	0	0.487451737451737	10
+Autoantibody-only	repeated_nested_5fold	MDA5-18	230905-IM-U5_BC28	MDA5	1	0.402852049910874	10
+Autoantibody-only	repeated_nested_5fold	MDA5-29	230914-IM-U5_BC21	MDA5	0	0.40463458110517	10
+Autoantibody-only	repeated_nested_5fold	MDA5-36	230914-IM-U5_BC28	MDA5	1	0.399286987522282	10
+Autoantibody-only	repeated_nested_5fold	MDA5-40	230914-IM-U5_BC33	MDA5	1	0.401069518716578	10
+Autoantibody-only	repeated_nested_5fold	MDA5-43	230914-IM-U8_BC36	MDA5	0	0.402852049910874	10
+Autoantibody-only	repeated_nested_5fold	MDA5-47	230926-IM-U3_BC29	MDA5	0	0.40463458110517	10
+Autoantibody-only	repeated_nested_5fold	MDA5-48	230926-IM-U3_BC30	MDA5	0	0.406417112299465	10
+Autoantibody-only	repeated_nested_5fold	MDA5-53	230926-IM-U2_BC35	MDA5	0	0.404634581105169	10
+Clinical-only	repeated_nested_5fold	ARS-1	230821-IM-U2_BC21	ARS	0	0.498562541102129	10
+Clinical-only	repeated_nested_5fold	ARS-24	230905-IM-U2_BC36	ARS	0	0.476892586003567	10
+Clinical-only	repeated_nested_5fold	ARS-29	230914-IM-U3_BC16	ARS	1	0.533801462276125	10
+Clinical-only	repeated_nested_5fold	ARS-37	230926-IM-U8_BC13	ARS	1	0.451249539908176	10
+Clinical-only	repeated_nested_5fold	ARS-48	230926-IM-U2_BC24	ARS	0	0.503699708954326	10
+Clinical-only	repeated_nested_5fold	ARS-49	230926-IM-U6_BC25	ARS	1	0.6015223804122	10
+Clinical-only	repeated_nested_5fold	ARS-5	230821-IM-U2_BC25	ARS	1	0.604934926907855	10
+Clinical-only	repeated_nested_5fold	ARS-50	230926-IM-U6_BC27	ARS	0	0.67052097055683	10
+Clinical-only	repeated_nested_5fold	MDA5-18	230905-IM-U5_BC28	MDA5	1	0.587383241353661	10
+Clinical-only	repeated_nested_5fold	MDA5-29	230914-IM-U5_BC21	MDA5	0	0.420346658913275	10
+Clinical-only	repeated_nested_5fold	MDA5-36	230914-IM-U5_BC28	MDA5	1	0.51931672324087	10
+Clinical-only	repeated_nested_5fold	MDA5-40	230914-IM-U5_BC33	MDA5	1	0.56288134795683	10
+Clinical-only	repeated_nested_5fold	MDA5-43	230914-IM-U8_BC36	MDA5	0	0.402440299150364	10
+Clinical-only	repeated_nested_5fold	MDA5-47	230926-IM-U3_BC29	MDA5	0	0.569972657241753	10
+Clinical-only	repeated_nested_5fold	MDA5-48	230926-IM-U3_BC30	MDA5	0	0.47407034981738	10
+Clinical-only	repeated_nested_5fold	MDA5-53	230926-IM-U2_BC35	MDA5	0	0.41264577176554	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-1	230821-IM-U2_BC21	ARS	0	0.693480930065646	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-24	230905-IM-U2_BC36	ARS	0	0.307739505310934	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-29	230914-IM-U3_BC16	ARS	1	0.826872092552133	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-37	230926-IM-U8_BC13	ARS	1	0.30090688813137	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-48	230926-IM-U2_BC24	ARS	0	0.284137982775148	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-49	230926-IM-U6_BC25	ARS	1	0.809496000441325	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-5	230821-IM-U2_BC25	ARS	1	0.646852114244519	10
+Hallmark pathway-level	repeated_nested_5fold	ARS-50	230926-IM-U6_BC27	ARS	0	0.7380153246015	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-18	230905-IM-U5_BC28	MDA5	1	0.412156731707319	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-29	230914-IM-U5_BC21	MDA5	0	0.33197663844181	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-36	230914-IM-U5_BC28	MDA5	1	0.646405987020162	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-40	230914-IM-U5_BC33	MDA5	1	0.445248104407399	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-43	230914-IM-U8_BC36	MDA5	0	0.260857546000854	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-47	230926-IM-U3_BC29	MDA5	0	0.512501709433239	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-48	230926-IM-U3_BC30	MDA5	0	0.502140762889931	10
+Hallmark pathway-level	repeated_nested_5fold	MDA5-53	230926-IM-U2_BC35	MDA5	0	0.268523764370895	10
+Combined	repeated_nested_5fold	ARS-1	230821-IM-U2_BC21	ARS	0	0.60732961023232	10
+Combined	repeated_nested_5fold	ARS-24	230905-IM-U2_BC36	ARS	0	0.401875165129617	10
+Combined	repeated_nested_5fold	ARS-29	230914-IM-U3_BC16	ARS	1	0.751044036272017	10
+Combined	repeated_nested_5fold	ARS-37	230926-IM-U8_BC13	ARS	1	0.293196820344454	10
+Combined	repeated_nested_5fold	ARS-48	230926-IM-U2_BC24	ARS	0	0.403490682318731	10
+Combined	repeated_nested_5fold	ARS-49	230926-IM-U6_BC25	ARS	1	0.720151521435896	10
+Combined	repeated_nested_5fold	ARS-5	230821-IM-U2_BC25	ARS	1	0.652315642292593	10
+Combined	repeated_nested_5fold	ARS-50	230926-IM-U6_BC27	ARS	0	0.800493410926491	10
+Combined	repeated_nested_5fold	MDA5-18	230905-IM-U5_BC28	MDA5	1	0.504840832501983	10
+Combined	repeated_nested_5fold	MDA5-29	230914-IM-U5_BC21	MDA5	0	0.370380502473647	10
+Combined	repeated_nested_5fold	MDA5-36	230914-IM-U5_BC28	MDA5	1	0.58751058603086	10
+Combined	repeated_nested_5fold	MDA5-40	230914-IM-U5_BC33	MDA5	1	0.486851851864488	10
+Combined	repeated_nested_5fold	MDA5-43	230914-IM-U8_BC36	MDA5	0	0.283484181057202	10
+Combined	repeated_nested_5fold	MDA5-47	230926-IM-U3_BC29	MDA5	0	0.634369351824955	10
+Combined	repeated_nested_5fold	MDA5-48	230926-IM-U3_BC30	MDA5	0	0.476465032197295	10
+Combined	repeated_nested_5fold	MDA5-53	230926-IM-U2_BC35	MDA5	0	0.36911170660154	10

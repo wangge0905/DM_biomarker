@@ -1,0 +1,2 @@
+analysis	permutation_scheme	observed_nested_cv_AUC	permutations	null_AUC_mean	null_AUC_sd	null_AUC_95_low	null_AUC_95_high	empirical_P
+EV-RNA Hallmark severity model	severity labels permuted within antibody subtype; all outer folds, inner tuning, residualization and model fitting repeated	0.686965811965812	200	0.495090811965812	0.0594705133006005	0.378605769230769	0.604073183760684	0.0149253731343284

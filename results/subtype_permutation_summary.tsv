@@ -1,0 +1,3 @@
+test	permutation_scheme	observed_AUC	permutations	null_AUC_mean	null_AUC_sd	null_AUC_95_low	null_AUC_95_high	empirical_P
+locked_6_feature_panel_internal_validation	labels permuted within batch separately in discovery and internal validation; fixed features and cost; model refitted	0.811764705882353	1000	0.498054901960784	0.127107382789729	0.270490196078431	0.729509803921569	0.000999000999000999
+full_discovery_pipeline_5_fold_sensitivity	discovery labels permuted within batch; DE feature selection and k/cost tuning repeated inside 5-fold CV	0.83609022556391	200	0.600889097744361	0.0534222675001753	0.501494360902256	0.69421992481203	0.00497512437810945

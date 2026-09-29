@@ -1,864 +1,261 @@
-library(edgeR)
+# RStudio工作目录设为本文件夹
+library(data.table)
 library(ggplot2)
-library(dplyr)
-library(ggsignif)
-library(RColorBrewer)
+library(patchwork)
 
-setwd("/Users/wangge/Documents/DM/")
-mt <- read.table("totalRNA.matrix_rmbatch.all.txt", sep="\t", header=T, check.names=F)
 
-# 计算 CPM
-y <- DGEList(counts = mt)
-subtype <- unlist(lapply(strsplit(colnames(mt), "-", fixed=T), function(x) x[1]))
-subtype <- factor(subtype, levels = c("MDA5", "ARS", "HC"))
-cpm <- edgeR::cpm(y)
-cpm <- as.data.frame(cpm)
+options(stringsAsFactors = FALSE)
 
-# 固定颜色映射
-color_map <- brewer.pal(5, 'BrBG')[c(1, 2, 5)]
-names(color_map) <- c("MDA5", "ARS", "HC")
+dm <- "inputs"
+root <- "generated/biomarker"
+result_root <- file.path(root, "results", "sensitivity_delta_auc_0.01")
+out_dir <- "generated/biomarker/figures/fixed_panel_DEF_20260830"
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
-# 绘图函数
-group_gene_expression <- function(gene_ids, group = subtype, compare_groups, gene_order = NULL) {
-  all_gene_expression <- data.frame()
-  
-  for (gene_id in gene_ids) {
-    gene_expression <- as.data.frame(t(cpm[gene_id, ]))
-    #gene_expression$Sample <- rownames(gene_expression) 
-    colnames(gene_expression) <- "CPM"
-    gene_expression$Gene <- unlist(lapply(strsplit(gene_id, "|", fixed = TRUE), function(x) x[3]))
-    gene_expression$group <- subtype
-    rownames(gene_expression) <- NULL
-    
-    all_gene_expression <- rbind(all_gene_expression, gene_expression)
-  }
-  
-  if (!is.null(gene_order)) {
-    all_gene_expression$Gene <- factor(all_gene_expression$Gene, levels = gene_order)
-  }
-  
-  all_gene_expression <- all_gene_expression[all_gene_expression$group %in% compare_groups, ]
-  
-  
-  p <- ggplot(all_gene_expression, aes(x = group, y = log(CPM + 1), fill = group)) +
-    geom_boxplot(outlier.shape = NA) +
-    labs(y = "log(CPM + 1)") +
-    xlab("") +
-    theme_bw() +
+col_mda5 <- "#B36A1B"
+col_ars <- "#E0C377"
+col_hc <- "#078E78"
+col_development <- "#E31A1C"
+col_validation <- "#2C7FB8"
+font_family <- "Helvetica"
+
+theme_manuscript <- function(base_size = 13) {
+  theme_classic(base_size = base_size, base_family = font_family) +
     theme(
-      plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
-      panel.border = element_rect(colour = NA),
-      axis.title.y = element_text(angle = 90, vjust = 2, size = 12),
-      axis.text = element_text(size = 12),
-      axis.line = element_line(colour = "black"),
-      axis.ticks = element_line(),
-      legend.position = "none",
-      legend.title = element_blank(),
-      strip.text = element_text(face = "bold", size = 12),
-      strip.background = element_blank()
-    ) +
-    scale_fill_manual(values = color_map) +
-    geom_jitter(shape = 16, position = position_jitter(0.25)) +
-    geom_signif(comparisons = list(compare_groups), step_increase = 0.1, vjust = 0.5, map_signif_level = TRUE) +
-    facet_wrap(~ Gene, scales = "free_y", nrow = 1)
-  p
-  return(p)
+      text = element_text(colour = "black"),
+      axis.title = element_text(size = base_size + 1),
+      axis.text = element_text(size = base_size),
+      plot.title = element_text(size = base_size + 1, face = "bold", hjust = 0.5),
+      plot.margin = margin(4, 5, 4, 5)
+    )
 }
 
-# 根据对比组绘制组合图
-# HC vs ARS
-genes_hc_vs_ars <- c("ENSG00000206047.3|498|DEFA1|protein_coding", 
-                     "ENSG00000207741.1|97|MIR590|miRNA", 
-                     "ENSG00000237346.2|803|RP3-448I9.2|lncRNA", 
-                     "ENSG00000207759.1|110|MIR181A1|miRNA")
-gene_order_hc_vs_ars <- c("DEFA1", "MIR590", "MIR181A1", "RP3-448I9.2")
-plot_hc_vs_ars <- group_gene_expression(genes_hc_vs_ars, compare_groups = c("HC", "ARS"), gene_order = gene_order_hc_vs_ars)
-ggsave("plot/HC_vs_ARS_boxplot.pdf", plot_hc_vs_ars, width = 7, height = 2.5)
+save_plot <- function(p, stem, width, height) {
+  ggsave(file.path(out_dir, paste0(stem, ".pdf")), p,
+         width = width, height = height, units = "in", device = cairo_pdf)
+  ggsave(file.path(out_dir, paste0(stem, ".png")), p,
+         width = width, height = height, units = "in", dpi = 300,
+         bg = "white", device = grDevices::png, type = "cairo")
+}
 
-# HC vs MDA5
-genes_hc_vs_mda5 <- c("ENSG00000206047.3|498|DEFA1|protein_coding", 
-                      "ENSG00000207741.1|97|MIR590|miRNA", 
-                      "ENSG00000199107.3|79|MIR409|miRNA", 
-                      "ENSG00000207651.1|86|MIR28|miRNA", 
-                      "ENSG00000202569.4|73|MIR146B|miRNA")
-gene_order_hc_vs_mda5 <- c("DEFA1", "MIR590", "MIR28", "MIR409", "MIR146B")
-plot_hc_vs_mda5 <- group_gene_expression(genes_hc_vs_mda5, compare_groups = c("HC", "MDA5"), gene_order = gene_order_hc_vs_mda5)
-ggsave("plot/HC_vs_MDA5_boxplot.pdf", plot_hc_vs_mda5, width = 8, height = 2.5)
+auc_value <- function(y, score) {
+  r <- rank(score, ties.method = "average")
+  n1 <- sum(y == 1)
+  n0 <- sum(y == 0)
+  (sum(r[y == 1]) - n1 * (n1 + 1) / 2) / (n1 * n0)
+}
 
-# MDA5 vs ARS
-genes_mda5_vs_ars <- c("ENSG00000274641.2|467|H2BC17|protein_coding", 
-                       "ENSG00000169429.11|2239|CXCL8|protein_coding", 
-                       "ENSG00000187608.10|867|ISG15|protein_coding", 
-                       "ENSG00000227121.2|1615|LINC02672|lncRNA", 
-                       "ENSG00000231128.6|1582|RP5-1073O3.2|lncRNA",
-                       "ENSG00000254251.1|833|RP11-662G23.1|lncRNA", 
-                       "ENSG00000201271.1|164|RNU1-112P|snRNA")
-gene_order_mda5_vs_ars <- c("H2BC17", "ISG15", "CXCL8", "LINC02672", "RP5-1073O3.2", "RP11-662G23.1", "RNU1-112P")
-plot_mda5_vs_ars <- group_gene_expression(genes_mda5_vs_ars, compare_groups = c("MDA5", "ARS"), gene_order = gene_order_mda5_vs_ars)
-ggsave("plot/MDA5_vs_ARS_boxplot.pdf", plot_mda5_vs_ars, width = 10.7, height = 2.8)
+roc_frame <- function(y, score) {
+  threshold <- c(Inf, sort(unique(score), decreasing = TRUE), -Inf)
+  out <- rbindlist(lapply(threshold, function(th) {
+    pred <- as.integer(score >= th)
+    data.frame(
+      FPR = mean(pred[y == 0] == 1),
+      TPR = mean(pred[y == 1] == 1)
+    )
+  }))
+  unique(out[order(FPR, TPR)])
+}
 
+raw <- fread(file.path(dm, "1204", "gencode.txt"), data.table = FALSE,
+             check.names = FALSE)
+feature_id <- raw[[1]]
+raw <- raw[, -1, drop = FALSE]
+raw <- raw[, -c(40:44, 50:54), drop = FALSE]
+colnames(raw)[35:44] <- sub("-GP", "", colnames(raw)[35:44], fixed = TRUE)
+rownames(raw) <- feature_id
+meta <- fread(file.path(root, "meta", "global_discovery_validation_manifest.tsv"))
+raw <- raw[, meta$library_id, drop = FALSE]
+log_expr <- log2(sweep(as.matrix(raw), 2, colSums(raw) / 1e6, "/") + 1)
+rm(raw)
 
-##### 没使用的
-library(edgeR)
-library(ggplot2)
-library(dplyr)
-library(ggsignif)
-library(RColorBrewer)
-setwd("/Users/wangge/Documents/DM/")
-mt <- read.table("totalRNA.matrix_rmbatch.all.txt",sep="\t",header=T,check.names=F)
+comparison_info <- list(
+  MDA5_vs_HC = list(
+    positive = "MDA5", negative = "HC",
+    positive_label = "Anti-MDA5+", negative_label = "HCs",
+    colors = c("Anti-MDA5+" = col_mda5, "HCs" = col_hc),
+    box_features = c("MIR146B", "MIR3142HG", "MIR223", "DNM3OS"),
+    box_width = 4.2, box_height = 4.7, box_ncol = 2
+  ),
+  ARS_vs_HC = list(
+    positive = "ARS", negative = "HC",
+    positive_label = "Anti-ARS+", negative_label = "HCs",
+    colors = c("Anti-ARS+" = col_ars, "HCs" = col_hc),
+    box_features = c("MEX3D", "C19orf81"),
+    box_width = 3.7, box_height = 3.0, box_ncol = 2
+  ),
+  MDA5_vs_ARS = list(
+    positive = "MDA5", negative = "ARS",
+    positive_label = "Anti-MDA5+", negative_label = "Anti-ARS+",
+    colors = c("Anti-MDA5+" = col_mda5, "Anti-ARS+" = col_ars),
+    # The final PDF template repositions cropped instances to put CCN1 above CXCL8.
+    box_features = c("EGR1", "H2BC17", "CXCL8", "CCN1", "C2CD4B", "MAMLD1"),
+    box_width = 6.2, box_height = 4.7, box_ncol = 3
+  )
+)
 
-y <- DGEList(counts = mt)
-libsize = y$samples
-subtype <- unlist(lapply(strsplit(colnames(mt),"-",fixed=T),function(x) x[1]))
-subtype <- factor(subtype, levels = c("MDA5","ARS","HC"))
-cpm <- edgeR::cpm(y)
-cpm <- as.data.frame(cpm)
-###DEFA1 expression
-{
-  DEFA1_cpm <- as.data.frame(t(cpm["ENSG00000206047.3|498|DEFA1|protein_coding",]))
-  #rownames(DEFA1_cpm) <- c("CPM")
-  DEFA1_cpm$group <- subtype
-  names(DEFA1_cpm)[names(DEFA1_cpm) == "ENSG00000206047.3|498|DEFA1|protein_coding"] <- "CPM"
-  
-  {
-    a=ggplot(DEFA1_cpm,aes(x=group,y=log(CPM+1), fill=group)) +
-      geom_boxplot(outlier.shape = NA) +
-      labs(title="DEFA1",y="log(CPM+1)") +
-      xlab("")+
-      theme_bw()+
-      theme(plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
-            #panel.background = element_rect(colour = NA),
-            #plot.background = element_rect(colour = NA),
-            panel.border = element_rect(colour = NA),
-            axis.title.y = element_text(angle = 90, vjust = 2, size = 16),
-            #axis.title.x = element_text(vjust = -0.2, size = base_size),
-            axis.text = element_text(size = 12),
-            axis.line = element_line(colour = "black"),
-            axis.ticks = element_line())+
-      scale_fill_manual(values = brewer.pal(5,'BrBG')[c(1,2,5)])+
+display_group <- function(x) {
+  ifelse(
+    x == "Anti-MDA5+", "Anti-\nMDA5+",
+    ifelse(x == "Anti-ARS+", "Anti-\nARS+", x)
+  )
+}
+
+make_boxplot <- function(comparison, info) {
+  panel <- fread(file.path(result_root, comparison, "fixed_biomarker_panel.tsv"))
+  panel <- panel[gene_symbol %in% info$box_features]
+  panel <- panel[match(info$box_features, gene_symbol)]
+  zmeta <- meta[group %in% c(info$positive, info$negative)]
+  plot_list <- lapply(seq_len(nrow(panel)), function(i) {
+    z <- data.frame(
+      group = ifelse(
+        zmeta$group == info$positive,
+        info$positive_label,
+        info$negative_label
+      ),
+      value = as.numeric(log_expr[panel$feature_id[i], zmeta$library_id])
+    )
+    z$group <- factor(z$group, levels = c(info$positive_label, info$negative_label))
+    fdr <- panel$FDR[i]
+    star <- if (fdr < 0.001) "***" else if (fdr < 0.01) "**" else if (fdr < 0.05) "*" else "NS"
+    ymax <- max(z$value, na.rm = TRUE)
+    ymin <- min(z$value, na.rm = TRUE)
+    span <- max(1, ymax - ymin)
+    ggplot(z, aes(group, value, fill = group)) +
+      geom_boxplot(width = 0.62, outlier.shape = NA, linewidth = 0.55) +
+      geom_point(position = position_jitter(width = 0.14, height = 0, seed = 20260830), size = 1.35, colour = "black") +
+      annotate("text", x = 1.5, y = ymax + 0.12 * span,
+               label = star, size = 4.5, family = font_family) +
+      scale_fill_manual(values = info$colors, guide = "none") +
+      scale_x_discrete(labels = display_group) +
       scale_y_continuous(
-        limits = c(-0.2,9),
-        breaks = c(0,2,4,6,8),
-        labels = c(0,2,4,6,8))+
-      #geom_hline(aes(yintercept=.4, color="red"), linetype="dashed",show.legend = FALSE)+
-      geom_jitter(shape=16, position = position_jitter(0.25),)+
-      geom_signif(comparisons = list( c("ARS", "HC"),c("MDA5", "ARS"), c("MDA5", "HC")),step_increase = 0.1,
-                  map_signif_level = TRUE)
-    a
-  }
-  #ggsave("plot/DEFA1_expression.pdf",a,width = 4, height = 4)
-  
+        name = "log(CPM+1)",
+        expand = expansion(mult = c(0.03, 0.17))
+      ) +
+      labs(x = NULL, title = ifelse(grepl("^MIR[0-9]+[A-Z]*$", panel$gene_symbol[i]) & panel$gene_symbol[i] != "MIR3142HG", sub("^mir", "hsa-mir-", tolower(panel$gene_symbol[i])), panel$gene_symbol[i])) +
+      theme_manuscript(12) +
+      theme(
+        axis.text.x = element_text(size = 10.5, lineheight = 0.9),
+        axis.title.y = element_text(size = 13),
+        plot.title = element_text(size = 13, face = "bold")
+      )
+  })
+  wrap_plots(plot_list, ncol = info$box_ncol) + plot_layout(guides = "collect")
 }
 
-plot_gene_expression <- function(gene_id, 
-                                 expression_matrix = cpm, 
-                                 group = subtype, 
-                                 #save_dir = "plot", 
-                                 #width = 4, 
-                                 #height = 4, 
-                                 compare_groups = c("MDA5", "ARS")) {  # 新增 compare_groups 参数
-  
-  gene_expression <- as.data.frame(t(cpm[gene_id, ]))
-  colnames(gene_expression) <- "CPM"
-  gene <- unlist(lapply(strsplit(gene_id, "|", fixed = TRUE), function(x) x[3]))
-  gene_expression$group <- group
-  
-  # 筛选出需要比较的两组
-  gene_expression <- gene_expression[gene_expression$group %in% compare_groups, ]
-  
-  # 设定固定的颜色映射
-  color_map <- brewer.pal(5, 'BrBG')[c(1, 2, 5)]
-  names(color_map) <- c("MDA5", "ARS", "HC")
-  
-  p <- ggplot(gene_expression, aes(x = group, y = log(CPM + 1), fill = group)) +
-    geom_boxplot(outlier.shape = NA) +
-    labs(title = gene, y = "log(CPM+1)") +
-    xlab("") +
-    theme_bw() +
+confusion_plot <- function(pred, threshold, info, title, palette) {
+  pred <- copy(pred)
+  if (!"predicted" %in% names(pred)) pred[, predicted := as.integer(score >= threshold)]
+  cm <- as.data.table(table(
+    truth = factor(pred$truth, levels = c(1, 0)),
+    predicted = factor(pred$predicted, levels = c(1, 0))
+  ))
+  cm[, truth_label := factor(
+    display_group(ifelse(truth == 1, info$positive_label, info$negative_label)),
+    levels = display_group(c(info$negative_label, info$positive_label))
+  )]
+  cm[, pred_label := factor(
+    display_group(ifelse(predicted == 1, info$positive_label, info$negative_label)),
+    levels = display_group(c(info$positive_label, info$negative_label))
+  )]
+  sensitivity <- mean(pred$predicted[pred$truth == 1] == 1)
+  specificity <- mean(pred$predicted[pred$truth == 0] == 0)
+  accuracy <- mean(pred$predicted == pred$truth)
+  metric <- sprintf(
+    "Sensitivity = %.2f%%\nSpecificity = %.2f%%\nAccuracy = %.2f%%",
+    100 * sensitivity, 100 * specificity, 100 * accuracy
+  )
+  ggplot(cm, aes(pred_label, truth_label, fill = N)) +
+    geom_tile(colour = "white", linewidth = 1.3) +
+    geom_text(aes(label = N), size = 5.1, family = font_family) +
+    scale_fill_gradient(low = palette[1], high = palette[2], guide = "none") +
+    coord_fixed(clip = "off") +
+    labs(x = "Predicted class", y = "True class", title = title,
+         caption = metric) +
+    theme_void(base_family = font_family, base_size = 13) +
     theme(
-      plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
-      panel.border = element_rect(colour = NA),
-      axis.title.y = element_text(angle = 90, vjust = 2, size = 16),
-      axis.text = element_text(size = 12),
-      axis.line = element_line(colour = "black"),
-      axis.ticks = element_line()
-    ) +
-    scale_fill_manual(values = color_map) +  # 使用固定的颜色映射
-    scale_y_continuous(
-      limits = c(-0.2, 5.5),
-      breaks = c(0, 1, 2, 3, 4, 5),
-      labels = c(0, 1, 2, 3, 4, 5)
-    ) +
-    geom_jitter(shape = 16, position = position_jitter(0.25)) +
-    geom_signif(comparisons = list(compare_groups), 
-                step_increase = 0.1, map_signif_level = TRUE)
-  
-  return(p)
+      plot.title = element_text(size = 13.5, face = "bold", hjust = 0.5,
+                                margin = margin(b = 5)),
+      axis.text.x = element_text(size = 12, colour = "black", lineheight = 0.88),
+      axis.text.y = element_text(size = 12, colour = "black", lineheight = 0.88),
+      axis.title.x = element_text(size = 12.5, face = "bold", margin = margin(t = 6)),
+      axis.title.y = element_text(size = 12.5, face = "bold", angle = 90,
+                                  margin = margin(r = 6)),
+      plot.caption = element_text(size = 10.5, hjust = 0.5, lineheight = 0.9,
+                                  margin = margin(t = 8)),
+      plot.margin = margin(5, 7, 5, 7)
+    )
 }
 
-# Plot for all pairwise comparisons for DEFA1
+make_confusion_pair <- function(comparison, info) {
+  dev <- fread(file.path(result_root, comparison, "development_fixed_panel_predictions.tsv"))
+  val <- fread(file.path(result_root, comparison, "internal_validation_predictions.tsv"))
+  threshold <- fread(file.path(result_root, comparison, "development_threshold.tsv"))$threshold[1]
+  dev[, predicted := as.integer(score >= threshold)]
+  p1 <- confusion_plot(dev, threshold, info, "Training set", c("#FDE0DD", "#B30000"))
+  p2 <- confusion_plot(val, threshold, info, "Internal test set", c("#EFF3FF", "#08519C"))
+  p1 + p2 + plot_layout(ncol = 2)
+}
 
-# Plot for HC vs ARS
-plot1 <- plot_gene_expression("ENSG00000207741.1|97|MIR590|miRNA", compare_groups = c("HC", "ARS"))
-plot2 <- plot_gene_expression("ENSG00000237346.2|803|RP3-448I9.2|lncRNA", compare_groups = c("HC", "ARS"))
-plot13 <- plot_gene_expression("ENSG00000207759.1|110|MIR181A1|miRNA", compare_groups = c("HC", "ARS"))
-plot18 <- plot_gene_expression("ENSG00000206047.3|498|DEFA1|protein_coding", compare_groups = c("HC", "ARS"))
-
-# Plot for HC vs MDA5
-plot3 <- plot_gene_expression("ENSG00000207651.1|86|MIR28|miRNA", compare_groups = c("HC", "MDA5"))
-plot4 <- plot_gene_expression("ENSG00000199107.3|79|MIR409|miRNA", compare_groups = c("HC", "MDA5"))
-plot5 <- plot_gene_expression("ENSG00000202569.4|73|MIR146B|miRNA", compare_groups = c("HC", "MDA5"))
-plot14 <- plot_gene_expression("ENSG00000207741.1|97|MIR590|miRNA", compare_groups = c("HC", "MDA5"))
-plot19 <- plot_gene_expression("ENSG00000206047.3|498|DEFA1|protein_coding", compare_groups = c("HC", "MDA5"))
-
-# Plot for MDA5 vs ARS
-plot9 <- plot_gene_expression("ENSG00000227121.2|1615|LINC02672|lncRNA", compare_groups = c("MDA5", "ARS"))
-plot10 <- plot_gene_expression("ENSG00000201271.1|164|RNU1-112P|snRNA", compare_groups = c("MDA5", "ARS"))
-plot11 <- plot_gene_expression("ENSG00000231128.6|1582|RP5-1073O3.2|lncRNA", compare_groups = c("MDA5", "ARS"))
-plot12 <- plot_gene_expression("ENSG00000254251.1|833|RP11-662G23.1|lncRNA", compare_groups = c("MDA5", "ARS"))
-plot6 <- plot_gene_expression("ENSG00000274641.2|467|H2BC17|protein_coding", compare_groups = c("MDA5", "ARS"))
-plot7 <- plot_gene_expression("ENSG00000169429.11|2239|CXCL8|protein_coding", compare_groups = c("MDA5", "ARS"))
-plot8 <- plot_gene_expression("ENSG00000187608.10|867|ISG15|protein_coding", compare_groups = c("MDA5", "ARS"))
-
-
-###DEG barplot function wilcox.test
-plot_gene_expression <- function(gene_id, expression_matrix = cpm, group = subtype, save_dir = "plot", width = 4, height = 4) {
-  gene_expression <- as.data.frame(t(cpm[gene_id, ]))
-  colnames(gene_expression) <- "CPM"
-  gene <- unlist(lapply(strsplit(gene_id, "|", fixed = TRUE), function(x) x[3]))
-  gene_expression$group <- group
-  
-  p <- ggplot(gene_expression, aes(x = group, y = log(CPM + 1), fill = group)) +
-    geom_boxplot(outlier.shape = NA) +
-    labs(title = gene, y = "log(CPM+1)") +
-    xlab("") +
-    theme_bw() +
+make_roc <- function(comparison, info) {
+  dev <- fread(file.path(result_root, comparison, "development_fixed_panel_predictions.tsv"))
+  val <- fread(file.path(result_root, comparison, "internal_validation_predictions.tsv"))
+  perf <- fread(file.path(result_root, comparison, "fixed_panel_performance.tsv"))
+  roc_dev <- roc_frame(dev$truth, dev$score)
+  roc_dev$set <- "Training"
+  roc_val <- roc_frame(val$truth, val$score)
+  roc_val$set <- "Internal test"
+  roc <- rbind(roc_dev, roc_val)
+  roc$set <- factor(roc$set, levels = c("Training", "Internal test"))
+  d <- perf[set == "development_fixed_panel_resampling"]
+  v <- perf[set == "internal_validation_fixed_panel"]
+  label_d <- sprintf(
+    "Training: %.3f (%.3f-%.3f)",
+    d$AUC, d$AUC_low, d$AUC_high
+  )
+  label_v <- sprintf(
+    "Internal test: %.3f (%.3f-%.3f)",
+    v$AUC, v$AUC_low, v$AUC_high
+  )
+  ggplot(roc, aes(FPR, TPR, colour = set)) +
+    geom_abline(slope = 1, intercept = 0, linewidth = 0.6, colour = "black") +
+    geom_step(linewidth = 1.25, direction = "vh") +
+    scale_colour_manual(
+      values = c("Training" = col_development, "Internal test" = col_validation),
+      breaks = c("Training", "Internal test"),
+      labels = c(label_d, label_v),
+      name = "AUC (95% CI)"
+    ) +
+    guides(colour = guide_legend(ncol = 1, byrow = TRUE,
+                                 override.aes = list(linewidth = 1.25))) +
+    coord_equal(xlim = c(0, 1.02), ylim = c(0, 1.02), clip = "off") +
+    scale_x_continuous(breaks = seq(0, 1, 0.25)) +
+    scale_y_continuous(breaks = seq(0, 1, 0.25)) +
+    labs(x = "False positive rate", y = "True positive rate") +
+    theme_manuscript(13) +
     theme(
-      plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
-      panel.border = element_rect(colour = NA),
-      axis.title.y = element_text(angle = 90, vjust = 2, size = 16),
-      axis.text = element_text(size = 12),
-      axis.line = element_line(colour = "black"),
-      axis.ticks = element_line()
-    ) +
-    scale_fill_manual(values = brewer.pal(5, 'BrBG')[c(1, 2, 5)]) +
-    scale_y_continuous(
-      limits = c(-0.2, 4.5),
-      breaks = c(0, 1, 2, 3, 4),
-      labels = c(0, 1, 2, 3, 4)
-    ) +
-    geom_jitter(shape = 16, position = position_jitter(0.25)) +
-    geom_signif(comparisons = list(c("ARS", "HC"), c("MDA5", "ARS"), c("MDA5", "HC")),
-                step_increase = 0.1, map_signif_level = TRUE)
-  
-  #if (!is.null(save_dir)) {
-  #  save_path <- sprintf("%s/%s_expression.pdf", save_dir, gene)
-  #  ggsave(save_path, plot = p, width = width, height = height)
-  #}
-  
-  return(p)
-}
-###函数使用
-{
-  #plot <- plot_gene_expression(gene_id, expression_matrix, subtype)
-  #####
-  #HCvsARS: DEFA1, MIR590, RP3-44819.2, MIR181A1
-  #HCvsMDA5: DEFA1, MIR590, MIR28, MIR409, MIR146B
-  #MDA5vsARS: H2BC17, CXCL8, ISG15, LINC02672, RNU1-112P, RP5-1073O3.2, RP11-662G23.1
-  #ncRNA parameter:
-  #scale_y_continuous(
-  #  limits = c(-0.2, 4.5),
-  #  breaks = c(0, 1, 2, 3, 4),
-  #  labels = c(0, 1, 2, 3, 4)
-  #  )
-  plot1 <- plot_gene_expression("ENSG00000207741.1|97|MIR590|miRNA")
-  plot2 <- plot_gene_expression("ENSG00000237346.2|803|RP3-448I9.2|lncRNA")
-  plot3 <- plot_gene_expression("ENSG00000207651.1|86|MIR28|miRNA")
-  plot4 <- plot_gene_expression("ENSG00000199107.3|79|MIR409|miRNA")
-  plot5 <- plot_gene_expression("ENSG00000202569.4|73|MIR146B|miRNA")
-  plot9 <- plot_gene_expression("ENSG00000227121.2|1615|LINC02672|lncRNA")
-  plot10 <- plot_gene_expression("ENSG00000201271.1|164|RNU1-112P|snRNA")
-  plot11 <- plot_gene_expression("ENSG00000231128.6|1582|RP5-1073O3.2|lncRNA")
-  plot12 <- plot_gene_expression("ENSG00000254251.1|833|RP11-662G23.1|lncRNA")
-  plot13 <- plot_gene_expression("ENSG00000207759.1|110|MIR181A1|miRNA")
-  #protein_coding RNA parameter:
-  #scale_y_continuous(
-  #  limits = c(-0.2, 6.7),
-  #  breaks = c(0, 2, 4, 6),
-  #  labels = c(0, 2, 4, 6)
-  #  )
-  plot6 <- plot_gene_expression("ENSG00000274641.2|467|H2BC17|protein_coding")
-  plot7 <- plot_gene_expression("ENSG00000169429.11|2239|CXCL8|protein_coding")
-  plot8 <- plot_gene_expression("ENSG00000187608.10|867|ISG15|protein_coding")
+      axis.title = element_text(size = 14),
+      axis.text = element_text(size = 12.5),
+      legend.position = "top",
+      legend.justification = "left",
+      legend.direction = "vertical",
+      legend.title = element_text(size = 10.5, face = "bold"),
+      legend.text = element_text(size = 10.5),
+      legend.key.width = grid::unit(18, "pt"),
+      legend.key.height = grid::unit(8, "pt"),
+      legend.margin = margin(0, 0, 3, 0),
+      plot.margin = margin(3, 9, 5, 5)
+    )
 }
 
-plot13 <- plot_gene_expression("ENSG00000150593.18|4547|PDCD4|protein_coding")
-###组合图
-{
-  p1 <- ggpubr::ggarrange(a,plot1,plot2,plot13, nrow = 1, ncol = 4, #labels = c('A'), 
-                          font.label = list(color = 'black'), 
-                          common.legend = T, 
-                          legend = "right")
-  p1
-  ggsave("plot/HCvsARS_ML_gene.pdf", plot = p1, width = 9, height = 3)
-  
-  p2 <- ggpubr::ggarrange(a,plot1,plot3,plot4,plot5, nrow = 1, ncol = 5, #labels = c('A'), 
-                          font.label = list(color = 'black'), 
-                          common.legend = T, 
-                          legend = "right")
-  p2
-  #ggsave("plot/HCvsMDA5_ML_gene.pdf", plot = p2, width = 11.5, height = 3)
-  
-  p3 <- ggpubr::ggarrange(plot6,plot7,plot8,plot9,plot10,plot11,plot12, nrow = 2, ncol = 5, #labels = c('A'), 
-                          font.label = list(color = 'black'), 
-                          common.legend = T, 
-                          legend = "right")
-  p3
-  ggsave("plot/MDA5vsARS_ML_gene3.pdf", plot = p3, width = 11.5, height = 5.5)
-  
-}
-##### 没使用的小提琴图
-{
-  summary_stats <- DEFA1_cpm %>%
-    group_by(subtype) %>%
-    summarize(mean_y = mean(log(CPM+1)),
-              q25 = quantile(log(CPM+1), 0.25),
-              q75 = quantile(log(CPM+1), 0.75))
-  p3 <- ggplot(DEFA1_cpm,aes(x=subtype,y=log(CPM+1), fill=subtype)) +
-    geom_violin(show.legend = TRUE, width = 0.8, scale = "width") +
-    geom_segment(data = summary_stats, aes(x = subtype, xend=subtype, y = q25, yend = q75), color = "black") +
-    # 在竖线上画点表示均值
-    geom_point(data = summary_stats, aes(x = subtype, y = mean_y), color = "black", size = 3) +
-    labs(title="miRNA species",y="Species number") +
-    xlab("")+
-    theme_bw()+
-    theme(plot.title = element_text(face = "bold", hjust = 0.5, size = 16),
-          #panel.background = element_rect(colour = NA),
-          #plot.background = element_rect(colour = NA),
-          panel.border = element_rect(colour = NA),
-          axis.title.y = element_text(angle = 90, vjust = 2, size = 16),
-          #axis.title.x = element_text(vjust = -0.2, size = base_size),
-          axis.text = element_text(size = 12),
-          axis.line = element_line(colour = "black"),
-          axis.ticks = element_line())+
-    scale_fill_manual(values = brewer.pal(5,'BrBG')[c(1,2,5)])+
-    scale_y_continuous(
-      limits = c(0,6),
-      breaks = c(1,3,5),
-      labels = c(1,3,5))
-  #geom_hline(aes(yintercept=6, color="red"), linetype="dashed",show.legend = FALSE)
-  p3
-  
+for (comparison in names(comparison_info)) {
+  info <- comparison_info[[comparison]]
+  p_d <- make_boxplot(comparison, info)
+  p_e <- make_confusion_pair(comparison, info)
+  p_f <- make_roc(comparison, info)
+  save_plot(p_d, paste0(comparison, "_D_boxplots"), info$box_width, info$box_height)
+  save_plot(p_e, paste0(comparison, "_E_confusion_development_internal"), 6.0, 3.2)
+  save_plot(p_f, paste0(comparison, "_F_ROC_development_internal"), 4.35, 3.5)
 }
 
-
-
-#### GO & KEGG
-KEGG_GO_Expression <- function(Differential_result,
-                               output_KEGG,output_GO_BP,output_GO_MF,output_GO_CC,
-                               pvalue_cutoff,log2Foldchange_cutoff){
-  #all_gene <- row.names(Differential_result)
-  #strsplit is highly depend on the colnames of alteration matrix
-  #all_gene <- as.character(lapply(strsplit(all_gene,"\\."),function(x) x[1]))
-  #background <- getBM(attributes=c("ensembl_gene_id", "entrezgene_id"),
-  #                    filters = "ensembl_gene_id",
-  #                    values=all_gene, mart= mart,useCache = FALSE)
-  #background <- background[-which(background$entrezgene_id=="")]
-  #background <- background$entrezgene_id
-  
-  filtered_down <- rownames(Differential_result[(Differential_result$pvalue<pvalue_cutoff)&(Differential_result$log2FoldChange < -log2Foldchange_cutoff),])
-  filtered_down <- as.character(lapply(strsplit(filtered_down,"\\."),function(x) x[1]))
-  forenrich_down <- getBM(attributes=c("ensembl_gene_id", "entrezgene_id"),
-                          filters = "ensembl_gene_id",
-                          values=filtered_down, mart= mart,useCache = FALSE)
-  if(length(which(forenrich_down$entrezgene_id==""))==0){
-    forenrich_down <- forenrich_down
-  } else {
-    forenrich_down <- forenrich_down[-which(forenrich_down$entrezgene_id==""),]
-  }
-  forenrich_down <- forenrich_down$entrezgene_id
-  
-  filtered_up <- rownames(Differential_result[(Differential_result$pvalue<pvalue_cutoff)&(Differential_result$log2FoldChange > log2Foldchange_cutoff),])
-  filtered_up <- as.character(lapply(strsplit(filtered_up,"\\."),function(x) x[1]))
-  forenrich_up <- getBM(attributes=c("ensembl_gene_id", "entrezgene_id"),
-                        filters = "ensembl_gene_id",
-                        values=filtered_up, mart= mart,useCache = FALSE)
-  if(length(which(forenrich_up$entrezgene_id==""))==0){
-    forenrich_up <- forenrich_up
-  } else {
-    forenrich_up <- forenrich_up[-which(forenrich_up$entrezgene_id==""),]
-  }
-  forenrich_up <- forenrich_up$entrezgene_id
-  
-  #KEGG
-  {
-    KEGG_res_down <- enrichKEGG(
-      forenrich_down,
-      organism = "hsa",
-      keyType = "kegg",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1,
-      use_internal_data = FALSE)
-    KEGG_output_down <- KEGG_res_down@result
-    KEGG_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    KEGG_res_up <- enrichKEGG(
-      forenrich_up,
-      organism = "hsa",
-      keyType = "kegg",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1,
-      use_internal_data = FALSE)
-    KEGG_output_up <- KEGG_res_up@result
-    KEGG_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    KEGG_output <- rbind(KEGG_output_up,KEGG_output_down)
-    write.table(KEGG_output,output_KEGG,quote = FALSE,sep = "\t")
-  }
-  #GO_BP
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "BP",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "BP",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_BP,quote = FALSE,sep = "\t")
-  }
-  #GO_CC
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "CC",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "CC",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_CC,quote = FALSE,sep = "\t")
-  }
-  #GO_MF
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "MF",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "MF",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_MF,quote = FALSE,sep = "\t")
-  }
-}
-
-#function for enrichment analysis for miRNA: clusterprofiler
-KEGG_GO_miRNA_target <- function(Differential_result,
-                                 output_KEGG,output_GO_BP,output_GO_MF,output_GO_CC,
-                                 pvalue_cutoff,log2Foldchange_cutoff){
-  #all_tx <- row.names(Differential_result)
-  #strsplit is highly depend on the colnames of alteration matrix
-  #all_tx <- as.character(lapply(strsplit(all_tx,"\\."),function(x) x[1]))
-  #all_mir <- getBM(attributes=c("ensembl_transcript_id", "mirbase_id"),
-  #                         filters = "ensembl_transcript_id",
-  #                         values=all_tx, mart= mart,useCache = FALSE)
-  #all_mir <- all_mir[-which(all_mir$mirbase_id=="")]
-  #background <- get_multimir(mirna = all_mir$mirbase_id, summary = TRUE)
-  #background <- unique(background@data$target_entrez)
-  
-  filtered_down <- rownames(Differential_result[(Differential_result$pvalue<pvalue_cutoff)&(Differential_result$log2FoldChange < -log2Foldchange_cutoff),])
-  filtered_down <- as.character(lapply(strsplit(filtered_down,"\\."),function(x) x[1]))
-  down_tx <- as.character(lapply(strsplit(filtered_down,"\\."),function(x) x[1]))
-  down_mir <- getBM(attributes=c("ensembl_transcript_id", "mirbase_id"),
-                    filters = "ensembl_transcript_id",
-                    values=down_tx, mart= mart,useCache = FALSE)
-  if(length(which(down_mir$entrezgene_id==""))==0){
-    down_mir <- down_mir
-  } else {
-    down_mir <- down_mir[-which(down_mir$mirbase_id==""),]
-  }
-  forenrich_down <- get_multimir(mirna = down_mir$mirbase_id, summary = TRUE)
-  forenrich_down <- unique(forenrich_down@data$target_entrez)
-  
-  filtered_up <- rownames(Differential_result[(Differential_result$pvalue<pvalue_cutoff)&(Differential_result$log2FoldChange > log2Foldchange_cutoff),])
-  filtered_up <- as.character(lapply(strsplit(filtered_up,"\\."),function(x) x[1]))
-  up_tx <- as.character(lapply(strsplit(filtered_up,"\\."),function(x) x[1]))
-  up_mir <- getBM(attributes=c("ensembl_transcript_id", "mirbase_id"),
-                  filters = "ensembl_transcript_id",
-                  values=up_tx, mart= mart,useCache = FALSE)
-  if(length(which(up_mir$entrezgene_id==""))==0){
-    up_mir <- up_mir
-  } else {
-    up_mir <- up_mir[-which(up_mir$mirbase_id==""),]
-  }
-  forenrich_up <- get_multimir(mirna = up_mir$mirbase_id, summary = TRUE)
-  forenrich_up <- unique(forenrich_up@data$target_entrez)
-  
-  #KEGG
-  {
-    KEGG_res_down <- enrichKEGG(
-      forenrich_down,
-      organism = "hsa",
-      keyType = "kegg",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1,
-      use_internal_data = FALSE)
-    KEGG_output_down <- KEGG_res_down@result
-    KEGG_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    KEGG_res_up <- enrichKEGG(
-      forenrich_up,
-      organism = "hsa",
-      keyType = "kegg",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1,
-      use_internal_data = FALSE)
-    KEGG_output_up <- KEGG_res_up@result
-    KEGG_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    KEGG_output <- rbind(KEGG_output_up,KEGG_output_down)
-    write.table(KEGG_output,output_KEGG,quote = FALSE,sep = "\t")
-  }
-  #GO_BP
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "BP",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "BP",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_BP,quote = FALSE,sep = "\t")
-  }
-  #GO_CC
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "CC",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "CC",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_CC,quote = FALSE,sep = "\t")
-  }
-  #GO_MF
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "MF",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "MF",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_MF,quote = FALSE,sep = "\t")
-  }
-}
-
-KEGG_GO_miRNA <- function(Differential_result,
-                          output_KEGG,output_GO_BP,output_GO_MF,output_GO_CC,
-                          pvalue_cutoff,log2Foldchange_cutoff){
-  #all_tx <- row.names(Differential_result)
-  #strsplit is highly depend on the colnames of alteration matrix
-  #all_tx <- as.character(lapply(strsplit(all_tx,"\\."),function(x) x[1]))
-  #all_mir <- getBM(attributes=c("ensembl_transcript_id", "mirbase_id"),
-  #                         filters = "ensembl_transcript_id",
-  #                         values=all_tx, mart= mart,useCache = FALSE)
-  #all_mir <- all_mir[-which(all_mir$mirbase_id=="")]
-  #background <- get_multimir(mirna = all_mir$mirbase_id, summary = TRUE)
-  #background <- unique(background@data$target_entrez)
-  
-  filtered_down <- rownames(Differential_result[(Differential_result$pvalue<pvalue_cutoff)&(Differential_result$log2FoldChange < -log2Foldchange_cutoff),])
-  filtered_down <- as.character(lapply(strsplit(filtered_down,"\\."),function(x) x[1]))
-  down_tx <- as.character(lapply(strsplit(filtered_down,"\\."),function(x) x[1]))
-  down_mir <- getBM(attributes=c("ensembl_transcript_id", "entrezgene_id"),
-                    filters = "ensembl_transcript_id",
-                    values=down_tx, mart= mart,useCache = FALSE)
-  forenrich_down <- down_mir$entrezgene_id
-  
-  filtered_up <- rownames(Differential_result[(Differential_result$pvalue<pvalue_cutoff)&(Differential_result$log2FoldChange > log2Foldchange_cutoff),])
-  filtered_up <- as.character(lapply(strsplit(filtered_up,"\\."),function(x) x[1]))
-  up_tx <- as.character(lapply(strsplit(filtered_up,"\\."),function(x) x[1]))
-  up_mir <- getBM(attributes=c("ensembl_transcript_id", "entrezgene_id"),
-                  filters = "ensembl_transcript_id",
-                  values=up_tx, mart= mart,useCache = FALSE)
-  forenrich_up <- up_mir$entrezgene_id
-  
-  #KEGG
-  {
-    KEGG_res_down <- enrichKEGG(
-      forenrich_down,
-      organism = "hsa",
-      keyType = "kegg",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1,
-      use_internal_data = FALSE)
-    KEGG_output_down <- KEGG_res_down@result
-    KEGG_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    KEGG_res_up <- enrichKEGG(
-      forenrich_up,
-      organism = "hsa",
-      keyType = "kegg",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1,
-      use_internal_data = FALSE)
-    KEGG_output_up <- KEGG_res_up@result
-    KEGG_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    KEGG_output <- rbind(KEGG_output_up,KEGG_output_down)
-    write.table(KEGG_output,output_KEGG,quote = FALSE,sep = "\t")
-  }
-  #GO_BP
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "BP",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "BP",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_BP,quote = FALSE,sep = "\t")
-  }
-  #GO_CC
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "CC",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "CC",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_CC,quote = FALSE,sep = "\t")
-  }
-  #GO_MF
-  {
-    library(clusterProfiler)
-    GO_res_down <- enrichGO(
-      forenrich_down,
-      'org.Hs.eg.db',
-      ont = "MF",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_down <- GO_res_down@result
-    GO_output_down$GeneEnrichedIn <- "Down regulated"
-    
-    GO_res_up <- enrichGO(
-      forenrich_up,
-      'org.Hs.eg.db',
-      ont = "MF",
-      pvalueCutoff = 1,
-      pAdjustMethod = "BH",
-      #universe=as.character(background),
-      minGSSize = 0,
-      maxGSSize = 500,
-      qvalueCutoff = 1)
-    GO_output_up <- GO_res_up@result
-    GO_output_up$GeneEnrichedIn <- "Up regulated"
-    
-    GO_output <- rbind(GO_output_up,GO_output_down)
-    
-    write.table(GO_output,output_GO_MF,quote = FALSE,sep = "\t")
-  }
-}
+writeLines(capture.output(sessionInfo()), file.path(out_dir, "sessionInfo.txt"))
